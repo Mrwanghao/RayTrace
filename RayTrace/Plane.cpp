@@ -1,13 +1,15 @@
 #include "Plane.h"
+#include "Color.h"
+#include "ShadeRec.h"
 
-static const double kEpsilon = 0.01;
-
-Plane::Plane()
-{
-}
+const double Plane::kEpsilon = 0.01;
 
 Plane::Plane(const Vect3 & normal, const Vect3 & point)
+	:
+	normal(normal),
+	point(point)
 {
+	this->normal.Normalize();
 }
 
 
@@ -25,8 +27,9 @@ bool Plane::Hit(const Ray & _ray, double & tmin, ShadeRec & sr) const
 		sr.hitNormal = normal;
 		sr.hitAnObject = true;
 		sr.hitLocalPosition = _ray.origin + _ray.direction * t;
+		sr.color = Color::Red;
 
-
+		return true;
 	}
 	else
 	{

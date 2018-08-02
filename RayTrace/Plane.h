@@ -1,5 +1,5 @@
 #pragma once
-#include "GeometrixObject.h"
+#include "GeometricObject.h"
 #include "Vect3.h"
 
 class Plane : public GeometricObject
@@ -11,7 +11,6 @@ private:
 	static const double kEpsilon;
 
 public:
-	Plane();
 	Plane(const Vect3& normal, const Vect3& point);
 	~Plane();
 

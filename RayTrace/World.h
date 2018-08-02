@@ -1,12 +1,16 @@
 #pragma once
 #include "ViewPlane.h"
-#include "Tracer.h"
+#include "Sphere.h"
+
+class Tracer;
 
 class World
 {
 public:
 	ViewPlane vp;
 	Tracer* tracer_ptr;
+
+	Sphere sphere;
 
 public:
 	World();

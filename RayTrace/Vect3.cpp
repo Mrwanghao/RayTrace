@@ -1,4 +1,5 @@
 #include "Vect3.h"
+#include <math.h>
 
 Vect3::Vect3()
 	:
@@ -16,9 +17,34 @@ Vect3::Vect3(float _x, float _y, float _z)
 {
 }
 
+void Vect3::Normalize()
+{
+	float length = GetLength();
+	if (length == 0) return;
+	*this /= length;
+}
+
+Vect3 Vect3::GetNormalized() const
+{
+	float length = GetLength();
+	if (length == 0) return *this;
+	return Vect3(x / length, y / length, z / length);
+}
+
+float Vect3::GetLength() const
+{
+	return sqrt(x * x + y * y + z * z);
+}
+
 Vect3 Vect3::operator-(const Vect3 & right) const
 {
 	return Vect3(x - right.x, y - right.y, z - right.z);
+}
+
+void Vect3::operator/=(float scale)
+{
+	x /= scale;
+	y /= scale;
 }
 
 float Vect3::operator*(const Vect3 & right) const

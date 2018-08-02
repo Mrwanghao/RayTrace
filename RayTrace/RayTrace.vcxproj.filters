@@ -13,63 +13,131 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="源文件\Sampler">
+      <UniqueIdentifier>{c06ea0d4-328d-42c0-8e4e-2d950fa1a1d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Tracer">
+      <UniqueIdentifier>{451a4a91-ed25-482b-861f-4444cbb7bcfd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\BaseType">
+      <UniqueIdentifier>{dc602f42-7703-48a2-b724-2b1f6e05e4c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Math">
+      <UniqueIdentifier>{bf264067-735e-4a1a-b4d5-4dbab1a8927c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Mesh">
+      <UniqueIdentifier>{e7550f90-c483-49a1-8c3e-030bc57ad17a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Object">
+      <UniqueIdentifier>{ae1a45a9-98b3-4983-8015-a9cd89afabd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\World">
+      <UniqueIdentifier>{18a86005-965c-423c-9bfe-26f1e353ed2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Define">
+      <UniqueIdentifier>{12d04924-c1bf-420d-8fb4-53264dd48c9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Define\Uniform">
+      <UniqueIdentifier>{d105340b-8be7-46bf-a5de-25a0a1d7afbd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Ray.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="Sampler.h">
+      <Filter>源文件\Sampler</Filter>
     </ClInclude>
-    <ClInclude Include="Vect3.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="GeometrixObject.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ShadeRec.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="World.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Plane.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="Sphere.h">
-      <Filter>源文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ViewPlane.h">
-      <Filter>源文件</Filter>
+    <ClInclude Include="Jittered.h">
+      <Filter>源文件\Sampler</Filter>
     </ClInclude>
     <ClInclude Include="Tracer.h">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="SingleSphereTracerTest.h">
+      <Filter>源文件\Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="Color.h">
+      <Filter>源文件\BaseType</Filter>
+    </ClInclude>
+    <ClInclude Include="Vect3.h">
+      <Filter>源文件\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Vect2.h">
+      <Filter>源文件\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Ray.h">
+      <Filter>源文件\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>源文件\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadeRec.h">
+      <Filter>源文件\BaseType</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewPlane.h">
+      <Filter>源文件\BaseType</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>源文件\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>源文件\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometricObject.h">
+      <Filter>源文件\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="EngineDefine.h">
+      <Filter>源文件\Define\Uniform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Ray.cpp">
-      <Filter>源文件</Filter>
+    <ClCompile Include="Sampler.cpp">
+      <Filter>源文件\Sampler</Filter>
+    </ClCompile>
+    <ClCompile Include="Jittered.cpp">
+      <Filter>源文件\Sampler</Filter>
+    </ClCompile>
+    <ClCompile Include="Tracer.cpp">
+      <Filter>源文件\Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleSphereTracerTest.cpp">
+      <Filter>源文件\Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="Color.cpp">
+      <Filter>源文件\BaseType</Filter>
+    </ClCompile>
+    <ClCompile Include="Vect2.cpp">
+      <Filter>源文件\Math</Filter>
     </ClCompile>
     <ClCompile Include="Vect3.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Ray.cpp">
+      <Filter>源文件\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>源文件\Object</Filter>
     </ClCompile>
     <ClCompile Include="GeometricObject.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Object</Filter>
     </ClCompile>
     <ClCompile Include="ShadeRec.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\BaseType</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewPlane.cpp">
+      <Filter>源文件\BaseType</Filter>
     </ClCompile>
     <ClCompile Include="World.cpp">
+      <Filter>源文件\World</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Plane.cpp">
-      <Filter>源文件</Filter>
+      <Filter>源文件\Object</Filter>
     </ClCompile>
-    <ClCompile Include="Sphere.cpp">
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="svpng.inc">
       <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ViewPlane.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Tracer.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
+    </None>
   </ItemGroup>
 </Project>

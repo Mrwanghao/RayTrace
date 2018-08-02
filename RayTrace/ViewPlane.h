@@ -10,6 +10,7 @@ public:
 
 public:
 	ViewPlane();
+	ViewPlane(int _hres, int _wres, float _s);
 	~ViewPlane();
 };
 

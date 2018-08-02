@@ -1,7 +1,14 @@
 #include "Sphere.h"
 #include <math.h>
 
-static const double kEpsilon = 0.01;
+const double Sphere::kEpsilon = 0.01;
+
+Sphere::Sphere()
+	:
+	center(Vect3(0.0f, 0.0f, 0.0f)),
+	radius(1.0f)
+{
+}
 
 Sphere::Sphere(const Vect3& _center, const double& _radius)
 	:
@@ -59,6 +66,4 @@ bool Sphere::Hit(const Ray & _ray, double & tmin, ShadeRec & sr) const
 
 		return false;
 	}
-
-	return false;
 }

@@ -1,6 +1,7 @@
 #pragma once
-#include "GeometrixObject.h"
+#include "GeometricObject.h"
 #include "Vect3.h"
+#include "ShadeRec.h"
 
 
 class Sphere : public GeometricObject
@@ -12,10 +13,11 @@ private:
 	static const double kEpsilon;
 
 public:
+	Sphere();
 	Sphere(const Vect3& _center, const double& _radius);
 	~Sphere();
 
 public:
-	virtual bool Hit(const Ray& _ray, double& tmin, ShadeRec& sr) const;
+	bool Hit(const Ray& _ray, double& tmin, ShadeRec& sr) const override;
 };
 
