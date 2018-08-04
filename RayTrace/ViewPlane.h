@@ -1,4 +1,7 @@
 #pragma once
+
+class Sampler;
+
 class ViewPlane
 {
 public:
@@ -7,6 +10,12 @@ public:
 	float s;
 	float gamma;
 	float invGamma;
+	Sampler* sampler = nullptr;
+	int samplesCount;
+
+public:
+	void SetSampler(Sampler* _sampler);
+	void SetSamples(int _samplesCount);
 
 public:
 	ViewPlane();

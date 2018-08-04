@@ -116,12 +116,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="EngineDefine.h" />
     <ClInclude Include="GeometricObject.h" />
+    <ClInclude Include="Hammersley.h" />
     <ClInclude Include="Jittered.h" />
+    <ClInclude Include="MathUtil.h" />
+    <ClInclude Include="MultiJittered.h" />
+    <ClInclude Include="MultiObjectsTraceTest.h" />
+    <ClInclude Include="NRooks.h" />
     <ClInclude Include="Plane.h" />
+    <ClInclude Include="PureRandom.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="Regular.h" />
     <ClInclude Include="Sampler.h" />
     <ClInclude Include="ShadeRec.h" />
     <ClInclude Include="SingleSphereTracerTest.h" />
@@ -133,11 +141,19 @@
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="GeometricObject.cpp" />
+    <ClCompile Include="Hammersley.cpp" />
     <ClCompile Include="Jittered.cpp" />
+    <ClCompile Include="MathUtil.cpp" />
+    <ClCompile Include="MultiJittered.cpp" />
+    <ClCompile Include="MultiObjectsTraceTest.cpp" />
+    <ClCompile Include="NRooks.cpp" />
     <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="PureRandom.cpp" />
     <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="Regular.cpp" />
     <ClCompile Include="Sampler.cpp" />
     <ClCompile Include="ShadeRec.cpp" />
     <ClCompile Include="SingleSphereTracerTest.cpp" />
@@ -151,6 +167,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="svpng.inc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="basic.png" />
+    <Image Include="basic2.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

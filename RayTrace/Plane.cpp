@@ -4,6 +4,10 @@
 
 const double Plane::kEpsilon = 0.01;
 
+Plane::Plane()
+{
+}
+
 Plane::Plane(const Vect3 & normal, const Vect3 & point)
 	:
 	normal(normal),

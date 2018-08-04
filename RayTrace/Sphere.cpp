@@ -30,7 +30,7 @@ bool Sphere::Hit(const Ray & _ray, double & tmin, ShadeRec & sr) const
 	double b = 2.0 * temp * _ray.direction;
 	double c = temp * temp - radius * radius;
 
-	double disc = b * b - 2.0 * a * c;
+	double disc = b * b - 4.0 * a * c;
 
 	if (disc < 0.0)
 	{

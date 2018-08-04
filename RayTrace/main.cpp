@@ -14,7 +14,5 @@ int main()
 	world->RenderScene();
 
 	
-
-	system("pause");
 	return 0;
 }

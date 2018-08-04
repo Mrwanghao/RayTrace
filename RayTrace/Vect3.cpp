@@ -20,7 +20,8 @@ Vect3::Vect3(float _x, float _y, float _z)
 void Vect3::Normalize()
 {
 	float length = GetLength();
-	if (length == 0) return;
+	if (length == 0) 
+		return;
 	*this /= length;
 }
 
@@ -36,6 +37,11 @@ float Vect3::GetLength() const
 	return sqrt(x * x + y * y + z * z);
 }
 
+float Vect3::Dot(const Vect3& right) const
+{
+	return x * right.x + y * right.y + z * right.z;
+}
+
 Vect3 Vect3::operator-(const Vect3 & right) const
 {
 	return Vect3(x - right.x, y - right.y, z - right.z);
@@ -45,6 +51,7 @@ void Vect3::operator/=(float scale)
 {
 	x /= scale;
 	y /= scale;
+	z /= scale;
 }
 
 float Vect3::operator*(const Vect3 & right) const
@@ -65,6 +72,11 @@ Vect3 Vect3::operator/(float scale) const
 Vect3 Vect3::operator+(const Vect3 & right) const
 {
 	return Vect3(x + right.x, y + right.y, z + right.z);
+}
+
+void Vect3::operator+=(const Vect3 & right)
+{
+	*this = *this + right;
 }
 
 Vect3 operator*(float scale, const Vect3 & right)

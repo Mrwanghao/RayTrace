@@ -2,6 +2,11 @@
 #include "ShadeRec.h"
 #include "Color.h"
 #include "World.h"
+#include "MathUtil.h"
+
+
+Vect3 lightPosition(0.0f, 0.0f, 1200.0f);
+Vect3 lightPosition1(1000.0f, 1000.0f, 1200.0f);
 
 SingleSphereTracerTest::SingleSphereTracerTest()
 	:
@@ -24,10 +29,31 @@ Vect3 SingleSphereTracerTest::trace_ray(const Ray & _ray) const
 {
 	ShadeRec sr(world_ptr);
 	double t;
-
+#if 1
 	if (world_ptr->sphere.Hit(_ray, t, sr))
 	{
+#else
+	if (world_ptr->plane.Hit(_ray, t, sr))
+	{
+#endif
+
+#if 0
+		Vect3 lightDirection(
+			lightPosition.x - sr.hitLocalPosition.x, 
+			lightPosition.y - sr.hitLocalPosition.y,
+			lightPosition.z - sr.hitLocalPosition.z);
+		lightDirection.Normalize();
+		
+		Vect3 normal = sr.hitNormal;
+		normal.Normalize();
+
+		float cosValue = normal.Dot(lightDirection);
+		cosValue = Clamp(0.0f, 1.0f, cosValue);
+
+		return Color::Red * cosValue;
+#else
 		return Color::Red;
+#endif
 	}
 	else
 	{

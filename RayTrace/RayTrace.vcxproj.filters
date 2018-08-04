@@ -40,6 +40,9 @@
     <Filter Include="源文件\Define\Uniform">
       <UniqueIdentifier>{d105340b-8be7-46bf-a5de-25a0a1d7afbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\Camera">
+      <UniqueIdentifier>{9fcd171e-b863-475a-ad70-68fd6717eb7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sampler.h">
@@ -86,6 +89,30 @@
     </ClInclude>
     <ClInclude Include="EngineDefine.h">
       <Filter>源文件\Define\Uniform</Filter>
+    </ClInclude>
+    <ClInclude Include="MathUtil.h">
+      <Filter>源文件\Math</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>源文件\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="PureRandom.h">
+      <Filter>源文件\Sampler</Filter>
+    </ClInclude>
+    <ClInclude Include="NRooks.h">
+      <Filter>源文件\Sampler</Filter>
+    </ClInclude>
+    <ClInclude Include="Regular.h">
+      <Filter>源文件\Sampler</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiJittered.h">
+      <Filter>源文件\Sampler</Filter>
+    </ClInclude>
+    <ClInclude Include="Hammersley.h">
+      <Filter>源文件\Sampler</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiObjectsTraceTest.h">
+      <Filter>源文件\Tracer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -134,10 +161,42 @@
     <ClCompile Include="Plane.cpp">
       <Filter>源文件\Object</Filter>
     </ClCompile>
+    <ClCompile Include="MathUtil.cpp">
+      <Filter>源文件\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>源文件\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="PureRandom.cpp">
+      <Filter>源文件\Sampler</Filter>
+    </ClCompile>
+    <ClCompile Include="NRooks.cpp">
+      <Filter>源文件\Sampler</Filter>
+    </ClCompile>
+    <ClCompile Include="Regular.cpp">
+      <Filter>源文件\Sampler</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiJittered.cpp">
+      <Filter>源文件\Sampler</Filter>
+    </ClCompile>
+    <ClCompile Include="Hammersley.cpp">
+      <Filter>源文件\Sampler</Filter>
+    </ClCompile>
+    <ClCompile Include="MultiObjectsTraceTest.cpp">
+      <Filter>源文件\Tracer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="svpng.inc">
       <Filter>源文件</Filter>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="basic.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="basic2.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>

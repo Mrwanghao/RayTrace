@@ -23,8 +23,8 @@ public:
 	void Normalize();
 	Vect3 GetNormalized() const;
 	float GetLength() const;
-
-
+	float Dot(const Vect3& right) const;
+	inline void LoadZero() { x = y = z = 0.0f; }
 
 public:
 	Vect3 operator-(const Vect3& right) const;
@@ -33,6 +33,7 @@ public:
 	Vect3 operator*(float scale) const;
 	Vect3 operator/(float scale) const;
 	Vect3 operator+(const Vect3& right) const;
+	void operator+=(const Vect3& right);
 
 	friend Vect3 operator*(float scale, const Vect3& right);
 };

@@ -11,6 +11,7 @@ private:
 	static const double kEpsilon;
 
 public:
+	Plane();
 	Plane(const Vect3& normal, const Vect3& point);
 	~Plane();
 
