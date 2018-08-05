@@ -1,7 +1,7 @@
 #include "Sampler.h"
 #include <algorithm>
 #include <time.h>
-
+#include "EngineDefine.h"
 
 Sampler::Sampler()
 	:
@@ -140,4 +140,98 @@ void Sampler::ShuffleYCoordinantes()
 			samples[target].y = temp;
 		}
 	}
+}
+
+void Sampler::MapSamplesToUnitDisk()
+{
+	int size = samples.size();
+	float r, phi;
+	Vect2 sp;
+
+	diskSamples.reserve(size);
+
+	for (int j = 0; j < size; j++)
+	{
+		sp.x = 2.0 * samples[j].x - 1.0f;
+		sp.y = 2.0 * samples[j].y - 1.0f;
+
+		if (sp.x > -sp.y)
+		{
+			if (sp.x > sp.y)
+			{
+				r = sp.x;
+				phi = sp.y / sp.x;
+			}
+			else
+			{
+				r = sp.y;
+				phi = 2 - sp.x / sp.y;
+			}
+		}
+		else
+		{
+			if (sp.x < sp.y)
+			{
+				r = -sp.x;
+				phi = 4 + sp.y / sp.x;
+			}
+			else
+			{
+				r = -sp.y;
+				if (sp.y != 0.0f)
+				{
+					phi = 6 - sp.x / sp.y;
+				}
+				else
+				{
+					phi = 0.0f; // ½Ç¶ÈÆðµã
+				}
+			}
+		}
+
+		phi *= PI / 4.0f;
+
+		diskSamples[j].x = r * cosf(phi);
+		diskSamples[j].y = r * sinf(phi);
+	}
+
+	samples.erase(samples.begin(), samples.end());
+}
+
+Vect2 Sampler::SampleUnitDisk()
+{
+	srand((unsigned)time(NULL));
+	if (count++ % samplesCount == 0)
+	{
+		jump = (rand() % setsCount) * samplesCount;
+	}
+	return diskSamples[jump + shuffledIndices[jump + count++ % samplesCount]];
+}
+
+void Sampler::MapSamplesToHemisphere(float _exp)
+{
+	int size = samples.size();
+	hemisphereSamples.reserve(samplesCount * setsCount);
+
+	for (int j = 0; j < size; j++)
+	{
+		float cos_phi = cos(2.0 * PI * samples[j].x);
+		float sin_phi = sin(2.0 * PI * samples[j].x);
+		float cos_theta = pow((1.0 - samples[j].y), 1.0 / (_exp + 1.0));
+		float sin_theta = sqrt(1.0 - cos_theta * cos_theta);
+		float pu = sin_theta * cos_phi;
+		float pv = sin_theta * sin_phi;
+		float pw = cos_theta;
+		hemisphereSamples.push_back(Vect3(pu, pv, pw));
+	}
+	samples.erase(samples.begin(), samples.end());
+}
+
+Vect3 Sampler::SampleHemisphere()
+{
+	srand((unsigned)time(NULL));
+	if (count % samplesCount == 0)  									
+		jump = (rand() % setsCount) * samplesCount;
+
+	return (hemisphereSamples[jump + shuffledIndices[jump + count++ % samplesCount]]);
 }

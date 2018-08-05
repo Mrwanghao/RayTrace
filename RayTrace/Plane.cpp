@@ -31,7 +31,8 @@ bool Plane::Hit(const Ray & _ray, double & tmin, ShadeRec & sr) const
 		sr.hitNormal = normal;
 		sr.hitAnObject = true;
 		sr.hitLocalPosition = _ray.origin + _ray.direction * t;
-		sr.color = Color::Red;
+		sr.color = Color::Green;
+		sr.ray = _ray;
 
 		return true;
 	}

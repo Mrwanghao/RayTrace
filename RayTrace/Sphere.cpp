@@ -1,5 +1,6 @@
 #include "Sphere.h"
 #include <math.h>
+#include "Color.h"
 
 const double Sphere::kEpsilon = 0.01;
 
@@ -48,6 +49,8 @@ bool Sphere::Hit(const Ray & _ray, double & tmin, ShadeRec & sr) const
 			sr.hitNormal = (temp + t * _ray.direction) / radius;
 			sr.hitLocalPosition = _ray.origin + _ray.direction * t;
 			sr.hitAnObject = true;
+			sr.color = Color::Red;
+			sr.ray = _ray;
 
 			return true;
 		}
@@ -60,6 +63,8 @@ bool Sphere::Hit(const Ray & _ray, double & tmin, ShadeRec & sr) const
 			sr.hitNormal = (temp + t * _ray.direction) / radius;
 			sr.hitLocalPosition = _ray.origin + t * _ray.direction;
 			sr.hitAnObject = true;
+			sr.color = Color::Red;
+			sr.ray = _ray;
 
 			return true;
 		}

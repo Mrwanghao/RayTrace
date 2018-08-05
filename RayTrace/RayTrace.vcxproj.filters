@@ -25,9 +25,6 @@
     <Filter Include="源文件\Math">
       <UniqueIdentifier>{bf264067-735e-4a1a-b4d5-4dbab1a8927c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="源文件\Mesh">
-      <UniqueIdentifier>{e7550f90-c483-49a1-8c3e-030bc57ad17a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="源文件\Object">
       <UniqueIdentifier>{ae1a45a9-98b3-4983-8015-a9cd89afabd2}</UniqueIdentifier>
     </Filter>
@@ -42,6 +39,15 @@
     </Filter>
     <Filter Include="源文件\Camera">
       <UniqueIdentifier>{9fcd171e-b863-475a-ad70-68fd6717eb7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\BRDF">
+      <UniqueIdentifier>{dcdf49de-b84b-47b3-b7c6-e222390845c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Lights">
+      <UniqueIdentifier>{c59260e3-55a2-4507-9636-7991f992add6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Material">
+      <UniqueIdentifier>{e7550f90-c483-49a1-8c3e-030bc57ad17a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +120,30 @@
     <ClInclude Include="MultiObjectsTraceTest.h">
       <Filter>源文件\Tracer</Filter>
     </ClInclude>
+    <ClInclude Include="BRDF.h">
+      <Filter>源文件\BRDF</Filter>
+    </ClInclude>
+    <ClInclude Include="Lambertian.h">
+      <Filter>源文件\BRDF</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>源文件\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Ambient.h">
+      <Filter>源文件\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Directional.h">
+      <Filter>源文件\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>源文件\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Matte.h">
+      <Filter>源文件\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>源文件\Lights</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sampler.cpp">
@@ -184,6 +214,30 @@
     </ClCompile>
     <ClCompile Include="MultiObjectsTraceTest.cpp">
       <Filter>源文件\Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="BRDF.cpp">
+      <Filter>源文件\BRDF</Filter>
+    </ClCompile>
+    <ClCompile Include="Lambertian.cpp">
+      <Filter>源文件\BRDF</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>源文件\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Ambient.cpp">
+      <Filter>源文件\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Directional.cpp">
+      <Filter>源文件\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>源文件\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="Matte.cpp">
+      <Filter>源文件\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="PointLight.cpp">
+      <Filter>源文件\Lights</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
