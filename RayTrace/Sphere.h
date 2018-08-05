@@ -18,6 +18,7 @@ public:
 	~Sphere();
 
 public:
-	bool Hit(const Ray& _ray, double& tmin, ShadeRec& sr) const override;
+	virtual bool Hit(const Ray& _ray, double& tmin, ShadeRec& sr) const;
+	virtual GeometricObject* Clone() const;
 };
 

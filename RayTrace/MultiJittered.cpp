@@ -56,6 +56,8 @@ void MultiJittered::GenerateSamples()
 	float subcell_width = 1.0 / ((float)samplesCount);
 
 	Vect2 fillPoint;
+
+	srand((unsigned)time(NULL));
 	for (int j = 0; j < samplesCount * setsCount; j++)
 		samples.push_back(fillPoint);
 
@@ -66,19 +68,21 @@ void MultiJittered::GenerateSamples()
 				samples[i * n + j + p * samplesCount].y = (j * n + i) * subcell_width + RandomFloat() * subcell_width;
 			}
 
+	//在同一行进行打乱顺序
 	for (int p = 0; p < setsCount; p++)
 		for (int i = 0; i < n; i++)
-			for (int j = 0; j < n - 1; j++) {
-				int k = rand() % (n - j - 1) + j;
+			for (int j = 0; j < n; j++) {
+				int k = rand() % (n - j) + j;
 				float t = samples[i * n + j + p * samplesCount].x;
 				samples[i * n + j + p * samplesCount].x = samples[i * n + k + p * samplesCount].x;
 				samples[i * n + k + p * samplesCount].x = t;
 			}
 
+	//在同一列进行打乱顺序
 	for (int p = 0; p < setsCount; p++)
 		for (int i = 0; i < n; i++)
-			for (int j = 0; j < n - 1; j++) {
-				int k = rand() % (n - j - 1) + j;
+			for (int j = 0; j < n; j++) {
+				int k = rand() % (n - j) + j;
 				float t = samples[j * n + i + p * samplesCount].y;
 				samples[j * n + i + p * samplesCount].y = samples[k * n + i + p * samplesCount].y;
 				samples[k * n + i + p * samplesCount].y = t;

@@ -17,5 +17,6 @@ public:
 
 public:
 	virtual bool Hit(const Ray& _ray, double& tmin, ShadeRec& sr) const;
+	virtual GeometricObject* Clone() const;
 };
 

@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "Vect2.h"
+#include "Vect3.h"
 
 class Sampler
 {
@@ -24,6 +25,10 @@ public:
 	Vect2 SampleOneSet();
 	void ShuffleXCoordinantes();
 	void ShuffleYCoordinantes();
+	void MapSamplesToUnitDisk();
+	Vect2 SampleUnitDisk();
+	void MapSamplesToHemisphere(float _exp);
+	Vect3 SampleHemisphere();
 
 public:
 	inline void SetSetsCount(int _setsCount) { setsCount = _setsCount; }
@@ -36,6 +41,8 @@ protected:
 	int setsCount;
 	std::vector<Vect2> samples;
 	std::vector<int> shuffledIndices;
+	std::vector<Vect2> diskSamples;
+	std::vector<Vect3> hemisphereSamples;
 	unsigned long count;
 	int jump;
 };

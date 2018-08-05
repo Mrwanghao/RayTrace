@@ -34,6 +34,8 @@ public:
 	Vect3 operator/(float scale) const;
 	Vect3 operator+(const Vect3& right) const;
 	void operator+=(const Vect3& right);
+	Vect3 operator^(const Vect3& right) const;
+	Vect3 operator-() const;
 
 	friend Vect3 operator*(float scale, const Vect3& right);
 };

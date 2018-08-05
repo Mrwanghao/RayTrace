@@ -1,6 +1,7 @@
 #include "World.h"
 #include "EngineDefine.h"
 #include "SingleSphereTracerTest.h"
+#include "MultiObjectsTraceTest.h"
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
@@ -12,6 +13,7 @@
 #include "Jittered.h"
 #include "Hammersley.h"
 
+
 using namespace std;
 
 World::World()
@@ -21,18 +23,32 @@ World::World()
 
 World::~World()
 {
+	if (!objects.empty())
+	{
+		for (int i = 0; i < objects.size(); i++)
+		{
+			delete objects[i];
+		}
+	}
 }
 
 void World::Build()
 {
 	vp = ViewPlane(SCREEN_HEIGHT, SCREEN_WIDTH, 1);
 	vp.SetSampler(new MultiJittered(16));
-	tracer_ptr = new SingleSphereTracerTest(this);
-#if 1
-	sphere = Sphere(Vect3(0.0f, 0.0f, 1500.0f), 200);
-#else
-	plane = Plane(Vect3(0.0f, 1.0f, -1.0f), Vect3(0.0f, 0.0f, 1000.0f));
-#endif
+	//tracer_ptr = new SingleSphereTracerTest(this);
+	tracer_ptr = new MultiObjectsTraceTest(this);
+
+
+
+	sphere = Sphere(Vect3(0.0f, 0.0f, 1500.0f), 100);
+
+
+	objects.push_back(new Sphere(Vect3(300.0f, 100.0f, 1500.0f), 100));
+	objects.push_back(new Sphere(Vect3(0.0f, 0.0f, 1500.0f), 100));
+	objects.push_back(new Sphere(Vect3(0.0f, -100.0f, 1500.0f), 100));
+	objects.push_back(new Plane(Vect3(0.0f, 15.0f, -1.0f), Vect3(0.0f, 0.0f, 10000.0f)));
+
 }
 
 void World::RenderScene() const
@@ -75,6 +91,7 @@ void World::RenderScene() const
 			img[((SCREEN_HEIGHT - 1 - row) * SCREEN_WIDTH + col) * 3 + 1] = (unsigned char)(color.y * 255);
 			img[((SCREEN_HEIGHT - 1 - row) * SCREEN_WIDTH + col) * 3 + 2] = (unsigned char)(color.z * 255);
 		}
+		std::cout << "µÚ" << row << "ÐÐäÖÈ¾Íê±Ï" << std::endl;
 	}
 
 	svpng(fopen("basic.png", "wb"), SCREEN_WIDTH, SCREEN_HEIGHT, img, 0);

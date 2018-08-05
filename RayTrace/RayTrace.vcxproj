@@ -116,17 +116,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Ambient.h" />
+    <ClInclude Include="AreaLight.h" />
+    <ClInclude Include="BRDF.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Directional.h" />
     <ClInclude Include="EngineDefine.h" />
     <ClInclude Include="GeometricObject.h" />
     <ClInclude Include="Hammersley.h" />
     <ClInclude Include="Jittered.h" />
+    <ClInclude Include="Lambertian.h" />
+    <ClInclude Include="Light.h" />
+    <ClInclude Include="Material.h" />
     <ClInclude Include="MathUtil.h" />
+    <ClInclude Include="Matte.h" />
     <ClInclude Include="MultiJittered.h" />
     <ClInclude Include="MultiObjectsTraceTest.h" />
     <ClInclude Include="NRooks.h" />
     <ClInclude Include="Plane.h" />
+    <ClInclude Include="PointLight.h" />
     <ClInclude Include="PureRandom.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="Regular.h" />
@@ -141,16 +150,25 @@
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ambient.cpp" />
+    <ClCompile Include="AreaLight.cpp" />
+    <ClCompile Include="BRDF.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Directional.cpp" />
     <ClCompile Include="GeometricObject.cpp" />
     <ClCompile Include="Hammersley.cpp" />
     <ClCompile Include="Jittered.cpp" />
+    <ClCompile Include="Lambertian.cpp" />
+    <ClCompile Include="Light.cpp" />
+    <ClCompile Include="Material.cpp" />
     <ClCompile Include="MathUtil.cpp" />
+    <ClCompile Include="Matte.cpp" />
     <ClCompile Include="MultiJittered.cpp" />
     <ClCompile Include="MultiObjectsTraceTest.cpp" />
     <ClCompile Include="NRooks.cpp" />
     <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="PureRandom.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="Regular.cpp" />
