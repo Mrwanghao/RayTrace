@@ -26,4 +26,5 @@ public:
 public:
 	Vect2 operator/(float scale) const;
 	void operator/=(float scale);
+	Vect2 operator*(float scale) const;
 };

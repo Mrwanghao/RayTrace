@@ -147,6 +147,9 @@
     <ClInclude Include="AreaLight.h">
       <Filter>源文件\Lights</Filter>
     </ClInclude>
+    <ClInclude Include="Pinhole.h">
+      <Filter>源文件\Camera</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sampler.cpp">
@@ -244,6 +247,9 @@
     </ClCompile>
     <ClCompile Include="AreaLight.cpp">
       <Filter>源文件\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Pinhole.cpp">
+      <Filter>源文件\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

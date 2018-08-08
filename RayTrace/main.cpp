@@ -13,6 +13,5 @@ int main()
 	world->Build();
 	world->RenderScene();
 
-	
 	return 0;
 }

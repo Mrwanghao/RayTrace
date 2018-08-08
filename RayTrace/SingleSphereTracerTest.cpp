@@ -5,7 +5,7 @@
 #include "MathUtil.h"
 
 
-Vect3 lightPosition(0.0f, 0.0f, 1200.0f);
+Vect3 lightPosition(0.0f, 0.0f, 0.0f);
 Vect3 lightPosition1(1000.0f, 1000.0f, 1200.0f);
 
 SingleSphereTracerTest::SingleSphereTracerTest()

@@ -5,6 +5,8 @@
 #include <vector>
 
 
+class Camera;
+
 class Tracer;
 class Light;
 
@@ -14,6 +16,7 @@ public:
 	ViewPlane vp;
 	Tracer* tracer_ptr;
 	Light* ambientPtr;
+	Camera* mainCamera;
 
 	Sphere sphere;
 

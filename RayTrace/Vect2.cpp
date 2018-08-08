@@ -38,6 +38,11 @@ void Vect2::operator/=(float scale)
 	y /= scale;
 }
 
+Vect2 Vect2::operator*(float scale) const
+{
+	return Vect2(x * scale, y * scale);
+}
+
 Vect2 Vect2::GetNormalized() const
 {
 	float length = GetLength();

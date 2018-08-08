@@ -134,6 +134,7 @@
     <ClInclude Include="MultiJittered.h" />
     <ClInclude Include="MultiObjectsTraceTest.h" />
     <ClInclude Include="NRooks.h" />
+    <ClInclude Include="Pinhole.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="PureRandom.h" />
@@ -167,6 +168,7 @@
     <ClCompile Include="MultiJittered.cpp" />
     <ClCompile Include="MultiObjectsTraceTest.cpp" />
     <ClCompile Include="NRooks.cpp" />
+    <ClCompile Include="Pinhole.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="PureRandom.cpp" />

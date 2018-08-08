@@ -17,5 +17,7 @@ public:
 
 public:
 	virtual Vect3 trace_ray(const Ray& _ray) const;
+	virtual Vect3 trace_ray(const Ray _ray, int _depth) const;
+	virtual Vect3 trace_ray(const Ray _ray, float& _tmin, int _depth) const;
 };
 
