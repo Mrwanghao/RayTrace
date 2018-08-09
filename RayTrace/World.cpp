@@ -5,15 +5,17 @@
 #include <iostream>
 #include <fstream>
 #include <stdlib.h>
-#include "PureRandom.h"
-#include "Regular.h"
-#include "NRooks.h"
 #include "MultiJittered.h"
-#include "Jittered.h"
-#include "Hammersley.h"
+#include "RayCast.h"
 #include "Pinhole.h"
+#include "Light.h"
+#include "Matte.h"
+#include "Ambient.h"
+#include "Directional.h"
 
 using namespace std;
+
+const double World::kEpsilon = 0.01;
 
 World::World()
 	:
@@ -56,10 +58,13 @@ World::~World()
 
 void World::Build()
 {
+	ambientPtr = new Ambient();
+	ambientPtr->SetRadiance(0.9f);
+	ambientPtr->SetColor(Vect3(1.0f, 1.0f, 1.0f));
 	vp = ViewPlane(SCREEN_HEIGHT, SCREEN_WIDTH, 1);
 	vp.SetSampler(new MultiJittered(16));
 	//tracer_ptr = new SingleSphereTracerTest(this);
-	tracer_ptr = new MultiObjectsTraceTest(this);
+	tracer_ptr = new RayCast(this);
 
 	mainCamera = new Pinhole();
 	mainCamera->SetEye(Vect3(0.0f, 0.0f, -200.0f));
@@ -72,11 +77,27 @@ void World::Build()
 
 	sphere = Sphere(Vect3(0.0f, 0.0f, 1500.0f), 100);
 
+	Sphere* spherePtr = new Sphere(Vect3(0.0f, 0.0f, 500.0f), 100);
+	Matte* material = new Matte();
+	material->SetKA(0.25f);
+	material->SetKD(0.65f);
+	material->SetCD(Vect3(1.0f, 1.0f, 0.0f));
+	spherePtr->SetMaterial(material);
+	objects.push_back(spherePtr);
 
-	objects.push_back(new Sphere(Vect3(600.0f, 100.0f, 1500.0f), 100));
-	objects.push_back(new Sphere(Vect3(0.0f, 300.0f, 800.0f), 100));
-	objects.push_back(new Sphere(Vect3(0.0f, -300.0f, 400.0f), 100));
-	objects.push_back(new Plane(Vect3(0.0f, 15.0f, -1.0f), Vect3(0.0f, 0.0f, 10000.0f)));
+	Light* lightPtr = new Directional();
+	lightPtr->SetRadiance(3.0f);
+	lightPtr->SetColor(Vect3(1.0f, 1.0f, 1.0f));
+	lightPtr->SetDirection(Vect3(1.0f, 1.0f, -1.0f));
+	lights.push_back(lightPtr);
+
+	Plane* plane = new Plane(Vect3(0.0f, 10.0f, -1.0f), Vect3(0.0f, 0.0f, 5000.0f));
+	material = new Matte();
+	material->SetKA(0.25f);
+	material->SetKD(0.65f);
+	material->SetCD(Vect3(1.0f, 1.0f, 1.0f));
+	plane->SetMaterial(material);
+	objects.push_back(plane);
 
 }
 
@@ -84,50 +105,6 @@ void World::RenderScene() const
 {
 	mainCamera->RenderScene(*this);
 
-
-//	unsigned char* img = (unsigned char*)malloc(SCREEN_HEIGHT * SCREEN_WIDTH * 3 * sizeof(unsigned char));
-//
-//	Ray ray;
-//	Vect3 color;
-//	Vect2 pp;
-//	Vect2 sp;
-//	Vect3 pixelColor;
-//
-//	ray.direction = Vect3(0, 0, 1);
-//	int halfw = (vp.wres - 1) / 2;
-//	int halfh = (vp.hres - 1) / 2;
-//
-//	for (int row = 0; row < vp.hres; row++)
-//	{
-//		for (int col = 0; col < vp.wres; col++)
-//		{
-//#if 0
-//			ray = Ray(Vect3(col - halfw, row - halfh, -10), Vect3(0, 0, 1));
-//			//ray = Ray(Vect3(0, 0, -800), Vect3(col - halfw + 0.5f, row - halfh + 0.5f, 800));
-//			color = tracer_ptr->trace_ray(ray);
-//#else
-//			for (int p = 0; p < vp.samplesCount; p++)
-//			{
-//				sp = vp.sampler->SampleUnitSquare();
-//				pp.x = vp.s * (col - 0.5f * vp.wres + sp.x);
-//				pp.y = vp.s * (row - 0.5f * vp.hres + sp.y);
-//				ray.origin = Vect3(pp.x, pp.y, -10);
-//				pixelColor += tracer_ptr->trace_ray(ray);
-//			}
-//
-//			color = pixelColor / vp.samplesCount;
-//			pixelColor.LoadZero();
-//#endif
-//			
-//			img[((SCREEN_HEIGHT - 1 - row) * SCREEN_WIDTH + col) * 3] = (unsigned char)(color.x * 255);
-//			img[((SCREEN_HEIGHT - 1 - row) * SCREEN_WIDTH + col) * 3 + 1] = (unsigned char)(color.y * 255);
-//			img[((SCREEN_HEIGHT - 1 - row) * SCREEN_WIDTH + col) * 3 + 2] = (unsigned char)(color.z * 255);
-//		}
-//		std::cout << "µÚ" << row << "ÐÐäÖÈ¾Íê±Ï" << std::endl;
-//	}
-//
-//	svpng(fopen("basic.png", "wb"), SCREEN_WIDTH, SCREEN_HEIGHT, img, 0);
-//	free(img);
 }
 
 void World::OpenWindow(int hres, int wres) const
@@ -136,4 +113,37 @@ void World::OpenWindow(int hres, int wres) const
 
 void World::DisplayPixel(int row, int col) const
 {
+}
+
+ShadeRec World::hitObjects(const Ray & ray)
+{
+	ShadeRec sr(this);
+	double t;
+	Vect3 normal;
+	Vect3 hitPosition;
+	float tmin = DBL_MAX;
+	int objectsCount = objects.size();
+
+	for (int j = 0; j < objectsCount; j++)
+	{
+		if (objects[j]->Hit(ray, t, sr) && t < tmin)
+		{
+			sr.hitAnObject = true;
+			tmin = t;
+			sr.materialPtr = objects[j]->GetMaterial();
+			sr.hitPosition = ray.origin + ray.direction * t;
+			normal = sr.hitNormal;
+			hitPosition = sr.hitPosition;
+		}
+	}
+
+	if (sr.hitAnObject)
+	{
+		sr.t = tmin;
+		sr.hitNormal = normal;
+		sr.hitPosition = hitPosition;
+	}
+	
+
+	return sr;
 }

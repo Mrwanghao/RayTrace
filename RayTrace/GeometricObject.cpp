@@ -1,5 +1,6 @@
 #include "GeometricObject.h"
 #include "Material.h"
+#include "Matte.h"
 
 GeometricObject::GeometricObject()
 	:

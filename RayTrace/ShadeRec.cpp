@@ -1,53 +1,47 @@
 #include "ShadeRec.h"
+#include "World.h"
 #include "Color.h"
+#include "Material.h"
 
 ShadeRec::ShadeRec(World* _world)
 	:
-	world(_world),
 	hitAnObject(false),
-	hitLocalPosition(),
+	hitPosition(),
 	hitNormal(),
 	color(Color::Black),
+	world(_world),
+	ray(),
+	materialPtr(nullptr),
+	depth(0),
 	t(0.0f),
 	u(0.0f),
-	v(0.0f),
-	depth(0),
-	materialPtr(nullptr),
-	ray()
+	v(0.0f)
 {
 }
 
 ShadeRec::ShadeRec(const ShadeRec & right)
 	:
-	world(right.world),
 	hitAnObject(right.hitAnObject),
-	hitLocalPosition(right.hitLocalPosition),
+	hitPosition(right.hitPosition),
 	hitNormal(right.hitNormal),
 	color(right.color),
+	world(right.world),
+	ray(right.ray),
+	materialPtr(right.materialPtr),
+	depth(right.depth),
 	t(right.t),
 	u(right.u),
-	v(right.v),
-	depth(right.depth),
-	materialPtr(right.materialPtr),
-	ray(right.ray)
+	v(right.v)
 {
 }
 
 ShadeRec::~ShadeRec()
 {
-	if (materialPtr)
-	{
-		delete materialPtr;
-		materialPtr = nullptr;
-	}
+	//if (materialPtr)
+	//{
+	//	delete materialPtr;
+	//	materialPtr = nullptr;
+	//}
 }
 
-ShadeRec & ShadeRec::operator=(const ShadeRec & right)
-{
-	world = right.world;
-	hitAnObject = right.hitAnObject;
-	hitLocalPosition = right.hitLocalPosition;
-	hitNormal = right.hitNormal;
-	color = right.color;
-	return *this;
-}
+

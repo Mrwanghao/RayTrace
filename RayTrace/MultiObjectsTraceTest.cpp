@@ -45,9 +45,9 @@ Vect3 MultiObjectsTraceTest::trace_ray(const Ray & _ray) const
 	if (srMin.hitAnObject)
 	{
 		Vect3 lightDirection(
-			lightPosition.x - srMin.hitLocalPosition.x,
-			lightPosition.y - srMin.hitLocalPosition.y,
-			lightPosition.z - srMin.hitLocalPosition.z);
+			lightPosition.x - srMin.hitPosition.x,
+			lightPosition.y - srMin.hitPosition.y,
+			lightPosition.z - srMin.hitPosition.z);
 		lightDirection.Normalize();
 
 		Vect3 normal = srMin.hitNormal;

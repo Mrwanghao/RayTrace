@@ -1,11 +1,13 @@
 #include "Sphere.h"
 #include <math.h>
+#include "Matte.h"
 #include "Color.h"
 
 const double Sphere::kEpsilon = 0.01;
 
 Sphere::Sphere()
 	:
+	GeometricObject(),
 	center(Vect3(0.0f, 0.0f, 0.0f)),
 	radius(1.0f)
 {
@@ -27,9 +29,9 @@ bool Sphere::Hit(const Ray & _ray, double & tmin, ShadeRec & sr) const
 {
 	double t;
 	Vect3 temp = _ray.origin - center;
-	double a = _ray.direction * _ray.direction;
-	double b = 2.0 * temp * _ray.direction;
-	double c = temp * temp - radius * radius;
+	double a = _ray.direction.Dot(_ray.direction);
+	double b = 2.0 * temp.Dot(_ray.direction);
+	double c = temp.Dot(temp) - radius * radius;
 
 	double disc = b * b - 4.0 * a * c;
 
@@ -47,7 +49,7 @@ bool Sphere::Hit(const Ray & _ray, double & tmin, ShadeRec & sr) const
 		{
 			tmin = t;
 			sr.hitNormal = (temp + t * _ray.direction) / radius;
-			sr.hitLocalPosition = _ray.origin + _ray.direction * t;
+			sr.hitPosition = _ray.origin + _ray.direction * t;
 			sr.hitAnObject = true;
 			sr.color = Color::Red;
 			sr.ray = _ray;
@@ -61,7 +63,7 @@ bool Sphere::Hit(const Ray & _ray, double & tmin, ShadeRec & sr) const
 		{
 			tmin = t;
 			sr.hitNormal = (temp + t * _ray.direction) / radius;
-			sr.hitLocalPosition = _ray.origin + t * _ray.direction;
+			sr.hitPosition = _ray.origin + t * _ray.direction;
 			sr.hitAnObject = true;
 			sr.color = Color::Red;
 			sr.ray = _ray;

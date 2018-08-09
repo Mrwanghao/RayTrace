@@ -38,12 +38,14 @@ void ViewPlane::SetSamples(int _samplesCount)
 
 ViewPlane::ViewPlane()
 	:
+	maxDepth(UINT16_MAX),
 	sampler(nullptr)
 {
 }
 
 ViewPlane::ViewPlane(int _hres, int _wres, float _s)
 	:
+	maxDepth(UINT16_MAX),
 	hres(_hres),
 	wres(_wres),
 	s(_s),

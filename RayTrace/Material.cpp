@@ -1,7 +1,6 @@
 #include "Material.h"
 #include "Color.h"
 
-
 Material::Material()
 {
 }
@@ -9,7 +8,6 @@ Material::Material()
 Material::Material(const Material & right)
 {
 }
-
 
 Material::~Material()
 {

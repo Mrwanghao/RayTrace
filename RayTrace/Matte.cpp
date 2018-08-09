@@ -1,4 +1,8 @@
 #include "Matte.h"
+#include "ShadeRec.h"
+#include "Vect3.h"
+#include "World.h"
+#include "Light.h"
 
 Matte::Matte()
 	:
@@ -72,12 +76,19 @@ Matte & Matte::operator=(const Matte & right)
 
 Vect3 Matte::Shade(ShadeRec & sr)
 {
-	//Vect3 wo = -sr.ray.direction;
-	//Vect3 L = ambientBRDF->rho(sr, wo);
-	//
-	//
-	//return L;
-	return Vect3();
+	Vect3 wo = -sr.ray.direction;
+	Vect3 L = ambientBRDF->rho(sr, wo) * sr.world->ambientPtr->L(sr);
+	int 		num_lights = sr.world->GetLights().size();
+
+	for (int j = 0; j < num_lights; j++) {
+		Vect3 wi = sr.world->lights[j]->GetDirection(sr);
+		float ndotwi = sr.hitNormal.Dot(wi);
+
+		if (ndotwi > 0.0)
+			L += diffuseBRDF->f(sr, wo, wi) * sr.world->lights[j]->L(sr) * ndotwi;
+	}
+
+	return (L);
 }
 
 Matte::~Matte()

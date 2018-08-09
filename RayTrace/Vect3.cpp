@@ -54,9 +54,9 @@ void Vect3::operator/=(float scale)
 	z /= scale;
 }
 
-float Vect3::operator*(const Vect3 & right) const
+Vect3 Vect3::operator*(const Vect3 & right) const
 {
-	return x * right.x + y * right.y + z * right.z;
+	return Vect3(x * right.x, y * right.y, z * right.z);
 }
 
 Vect3 Vect3::operator*(float scale) const
@@ -87,6 +87,11 @@ Vect3 Vect3::operator^(const Vect3 & right) const
 Vect3 Vect3::operator-() const
 {
 	return Vect3(-x, -y, -z);
+}
+
+Vect3 Vect3::operator+=(float scale)
+{
+	return Vect3(x + scale, y + scale, z + scale);
 }
 
 Vect3 operator*(float scale, const Vect3 & right)

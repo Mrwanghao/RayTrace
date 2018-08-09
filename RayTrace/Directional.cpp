@@ -4,8 +4,8 @@ Directional::Directional()
 	:
 	Light(),
 	ls(1.0f),
-	color(),
-	direction(0.0f, 1.0f, 0.0f)
+	color(0.0f, 0.0f, 0.0f),
+	direction(0.0f, 0.0f, 1.0f)
 {
 }
 

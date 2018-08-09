@@ -23,5 +23,5 @@ private:
 
 public:
 	virtual inline void SetMaterial(Material* _mat) { material = _mat; }
-	inline Material* GetMaterial() { return material; }
+	virtual inline Material* GetMaterial() { return material; }
 };

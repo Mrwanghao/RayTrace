@@ -29,13 +29,14 @@ public:
 public:
 	Vect3 operator-(const Vect3& right) const;
 	void operator/=(float scale);
-	float operator*(const Vect3& right) const;
+	Vect3 operator*(const Vect3& right) const;
 	Vect3 operator*(float scale) const;
 	Vect3 operator/(float scale) const;
 	Vect3 operator+(const Vect3& right) const;
 	void operator+=(const Vect3& right);
 	Vect3 operator^(const Vect3& right) const;
 	Vect3 operator-() const;
-
+	Vect3 operator+=(float scale);
+	
 	friend Vect3 operator*(float scale, const Vect3& right);
 };

@@ -1,10 +1,13 @@
 #include "Plane.h"
 #include "Color.h"
 #include "ShadeRec.h"
+#include "Matte.h"
 
 const double Plane::kEpsilon = 0.01;
 
 Plane::Plane()
+	:
+	GeometricObject()
 {
 }
 
@@ -23,14 +26,14 @@ Plane::~Plane()
 
 bool Plane::Hit(const Ray & _ray, double & tmin, ShadeRec & sr) const
 {
-	double t = (point - _ray.origin) * normal / (_ray.direction * normal);
+	double t = (point - _ray.origin).Dot(normal) / (_ray.direction.Dot(normal));
 
 	if (t > kEpsilon)
 	{
 		tmin = t;
 		sr.hitNormal = normal;
 		sr.hitAnObject = true;
-		sr.hitLocalPosition = _ray.origin + _ray.direction * t;
+		sr.hitPosition = _ray.origin + _ray.direction * t;
 		sr.color = Color::Green;
 		sr.ray = _ray;
 

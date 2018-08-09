@@ -59,7 +59,7 @@ Vect3 Lambertian::samplef(const ShadeRec & sr, const Vect3 & wo, Vect3 & wi, flo
 	wi = sp.x * u + sp.y * v + sp.z * w;
 	wi.Normalize();
 
-	pdf = sr.hitNormal * wi / PI;
+	pdf = sr.hitNormal.Dot(wi)/ PI;
 
 	return kd * cd / PI;
 }

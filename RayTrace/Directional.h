@@ -14,9 +14,9 @@ public:
 	virtual ~Directional();
 
 public:
-	inline void SetRadiance(float _ls) { ls = _ls; }
-	inline void SetColor(const Vect3& _color) { color = _color; }
-	inline void SetDirection(const Vect3& _direction) { direction = _direction; direction.Normalize(); }
+	virtual inline void SetRadiance(float _ls) { ls = _ls; }
+	virtual inline void SetColor(const Vect3& _color) { color = _color; }
+	virtual inline void SetDirection(const Vect3& _direction) { direction = _direction; direction.Normalize(); }
 	
 private:
 	float ls;

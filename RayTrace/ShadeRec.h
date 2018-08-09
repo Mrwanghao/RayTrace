@@ -4,14 +4,13 @@
 #include "Ray.h"
 
 class World;
-class ShadeRec;
 class Material;
 
 class ShadeRec
 {
 public:
 	bool hitAnObject;
-	Vect3 hitLocalPosition;
+	Vect3 hitPosition;
 	Vect3 hitNormal;
 	Vect3 color;
 	World * world;
@@ -27,7 +26,5 @@ public:
 	ShadeRec(const ShadeRec& right);
 	~ShadeRec();
 
-public:
-	ShadeRec & operator=(const ShadeRec& right);
 };
 

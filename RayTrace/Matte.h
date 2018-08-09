@@ -1,7 +1,8 @@
 #pragma once
 #include "Material.h"
 #include "Lambertian.h"
-
+class Vect3;
+class ShadeRec;
 
 class Matte : public Material
 {

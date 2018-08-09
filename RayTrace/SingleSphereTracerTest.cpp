@@ -5,7 +5,7 @@
 #include "MathUtil.h"
 
 
-Vect3 lightPosition(0.0f, 0.0f, 0.0f);
+Vect3 lightPosition(0.0f, 1000.0f, 0.0f);
 Vect3 lightPosition1(1000.0f, 1000.0f, 1200.0f);
 
 SingleSphereTracerTest::SingleSphereTracerTest()
@@ -41,9 +41,9 @@ Vect3 SingleSphereTracerTest::trace_ray(const Ray & _ray) const
 
 #if 1
 		Vect3 lightDirection(
-			lightPosition.x - sr.hitLocalPosition.x, 
-			lightPosition.y - sr.hitLocalPosition.y,
-			lightPosition.z - sr.hitLocalPosition.z);
+			lightPosition.x - sr.hitPosition.x, 
+			lightPosition.y - sr.hitPosition.y,
+			lightPosition.z - sr.hitPosition.z);
 		lightDirection.Normalize();
 		
 		Vect3 normal = sr.hitNormal;

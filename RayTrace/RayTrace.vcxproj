@@ -139,6 +139,7 @@
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="PureRandom.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="RayCast.h" />
     <ClInclude Include="Regular.h" />
     <ClInclude Include="Sampler.h" />
     <ClInclude Include="ShadeRec.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="Vect2.h" />
     <ClInclude Include="Vect3.h" />
     <ClInclude Include="ViewPlane.h" />
+    <ClInclude Include="Whitted.h" />
     <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +175,7 @@
     <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="PureRandom.cpp" />
     <ClCompile Include="Ray.cpp" />
+    <ClCompile Include="RayCast.cpp" />
     <ClCompile Include="Regular.cpp" />
     <ClCompile Include="Sampler.cpp" />
     <ClCompile Include="ShadeRec.cpp" />
@@ -182,6 +185,7 @@
     <ClCompile Include="Vect2.cpp" />
     <ClCompile Include="Vect3.cpp" />
     <ClCompile Include="ViewPlane.cpp" />
+    <ClCompile Include="Whitted.cpp" />
     <ClCompile Include="World.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>

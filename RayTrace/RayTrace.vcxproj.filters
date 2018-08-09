@@ -150,6 +150,12 @@
     <ClInclude Include="Pinhole.h">
       <Filter>源文件\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="RayCast.h">
+      <Filter>源文件\Tracer</Filter>
+    </ClInclude>
+    <ClInclude Include="Whitted.h">
+      <Filter>源文件\Tracer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sampler.cpp">
@@ -250,6 +256,12 @@
     </ClCompile>
     <ClCompile Include="Pinhole.cpp">
       <Filter>源文件\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="RayCast.cpp">
+      <Filter>源文件\Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="Whitted.cpp">
+      <Filter>源文件\Tracer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

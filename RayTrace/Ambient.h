@@ -15,9 +15,9 @@ public:
 	virtual Vect3 L(ShadeRec& sr);
 
 public:
-	inline void SetRadiance(float _radiance) { ls = _radiance; }
-	inline void SetColor(const Vect3& _color) { color = _color; }
-	
+	virtual inline void SetRadiance(float _radiance) { ls = _radiance; }
+	virtual inline void SetColor(const Vect3& _color) { color = _color; }
+	virtual inline void SetDirection(const Vect3& _direction) {}
 private:
 	float ls;
 	Vect3 color;

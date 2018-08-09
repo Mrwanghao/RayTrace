@@ -12,6 +12,7 @@ public:
 	float invGamma;
 	Sampler* sampler = nullptr;
 	int samplesCount;
+	int maxDepth;
 
 public:
 	void SetSampler(Sampler* _sampler);

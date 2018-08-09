@@ -31,10 +31,10 @@ Vect3 Tracer::trace_ray(const Ray & _ray) const
 
 Vect3 Tracer::trace_ray(const Ray _ray, int _depth) const
 {
-	return Vect3();
+	return Color::Black;
 }
 
 Vect3 Tracer::trace_ray(const Ray _ray, float & _tmin, int _depth) const
 {
-	return Vect3();
+	return Color::Black;
 }

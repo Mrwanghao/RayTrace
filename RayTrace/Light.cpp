@@ -18,10 +18,6 @@ Light & Light::operator=(const Light & right)
 	return *this;
 }
 
-Light * Light::Clone() const
-{
-	return nullptr;
-}
 
 Light::~Light()
 {

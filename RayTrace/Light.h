@@ -18,4 +18,8 @@ public:
 public:
 	virtual Vect3 GetDirection(ShadeRec& sr) = 0;
 	virtual Vect3 L(ShadeRec& sr);
+
+	virtual inline void SetRadiance(float _ls) = 0;
+	virtual inline void SetColor(const Vect3& _color) = 0;
+	virtual inline void SetDirection(const Vect3& _direction) = 0;
 };
