@@ -1,4 +1,5 @@
 #include "Directional.h"
+#include "World.h"
 
 Directional::Directional()
 	:
@@ -49,6 +50,23 @@ Vect3 Directional::L(ShadeRec & sr)
 
 Directional::~Directional()
 {
+}
+
+bool Directional::InShadow(const Ray & ray, const ShadeRec & sr) const
+{
+	float t;
+	int objectsCount = sr.world->GetObjects().size();
+	float distance = FLT_MAX;
+
+	for (int j = 0; j < objectsCount; j++)
+	{
+		if (sr.world->objects[j]->ShadowHit(ray, t) && t < distance)
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 

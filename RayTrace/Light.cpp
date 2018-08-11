@@ -1,10 +1,14 @@
 #include "Light.h"
 
 Light::Light()
+	:
+	IsShadow(true)
 {
 }
 
 Light::Light(const Light & right)
+	:
+	IsShadow(right.IsShadow)
 {
 }
 
@@ -14,6 +18,8 @@ Light & Light::operator=(const Light & right)
 	{
 		return *this;
 	}
+
+	IsShadow = right.IsShadow;
 
 	return *this;
 }
@@ -26,4 +32,9 @@ Light::~Light()
 Vect3 Light::L(ShadeRec & sr)
 {
 	return Color::Black;
+}
+
+bool Light::InShadow(const Ray & ray, const ShadeRec & sr) const
+{
+	return false;
 }

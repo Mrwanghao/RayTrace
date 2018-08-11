@@ -49,3 +49,18 @@ GeometricObject * Plane::Clone() const
 {
 	return new Plane(*this);
 }
+
+bool Plane::ShadowHit(const Ray & ray, float & tmin) const
+{
+	double t = (point - ray.origin).Dot(normal) / (ray.direction.Dot(normal));
+
+	if (t > kEpsilon)
+	{
+		tmin = t;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

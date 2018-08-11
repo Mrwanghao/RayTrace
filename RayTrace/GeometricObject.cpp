@@ -42,3 +42,8 @@ GeometricObject::~GeometricObject()
 		material = nullptr;
 	}
 }
+
+bool GeometricObject::ShadowHit(const Ray & ray, float & tmin) const
+{
+	return false;
+}

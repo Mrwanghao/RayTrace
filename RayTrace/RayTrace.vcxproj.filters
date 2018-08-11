@@ -156,6 +156,12 @@
     <ClInclude Include="Whitted.h">
       <Filter>源文件\Tracer</Filter>
     </ClInclude>
+    <ClInclude Include="GlossySpecular.h">
+      <Filter>源文件\BRDF</Filter>
+    </ClInclude>
+    <ClInclude Include="Phong.h">
+      <Filter>源文件\Material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sampler.cpp">
@@ -262,6 +268,12 @@
     </ClCompile>
     <ClCompile Include="Whitted.cpp">
       <Filter>源文件\Tracer</Filter>
+    </ClCompile>
+    <ClCompile Include="GlossySpecular.cpp">
+      <Filter>源文件\BRDF</Filter>
+    </ClCompile>
+    <ClCompile Include="Phong.cpp">
+      <Filter>源文件\Material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

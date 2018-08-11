@@ -35,8 +35,6 @@ public:
 public:
 	void Build();
 	void RenderScene() const;
-	void OpenWindow(int hres, int wres) const;
-	void DisplayPixel(int row, int col) const;
 	void AddObject(GeometricObject* _object) { objects.push_back(_object); }
 	void AddLight(Light* _light) { lights.push_back(_light); }
 	ShadeRec hitObjects(const Ray& ray);

@@ -18,6 +18,9 @@ public:
 	virtual inline void SetColor(const Vect3& _color) { color = _color; }
 	virtual inline void SetDirection(const Vect3& _direction) { direction = _direction; direction.Normalize(); }
 	
+	virtual inline void SetShadow(bool _isShadow) { IsShadow = _isShadow; }
+	virtual inline bool GetShadow() { return IsShadow; }
+	virtual bool InShadow(const Ray& ray, const ShadeRec& sr) const;
 private:
 	float ls;
 	Vect3 color;

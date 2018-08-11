@@ -124,6 +124,7 @@
     <ClInclude Include="Directional.h" />
     <ClInclude Include="EngineDefine.h" />
     <ClInclude Include="GeometricObject.h" />
+    <ClInclude Include="GlossySpecular.h" />
     <ClInclude Include="Hammersley.h" />
     <ClInclude Include="Jittered.h" />
     <ClInclude Include="Lambertian.h" />
@@ -134,6 +135,7 @@
     <ClInclude Include="MultiJittered.h" />
     <ClInclude Include="MultiObjectsTraceTest.h" />
     <ClInclude Include="NRooks.h" />
+    <ClInclude Include="Phong.h" />
     <ClInclude Include="Pinhole.h" />
     <ClInclude Include="Plane.h" />
     <ClInclude Include="PointLight.h" />
@@ -160,6 +162,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Directional.cpp" />
     <ClCompile Include="GeometricObject.cpp" />
+    <ClCompile Include="GlossySpecular.cpp" />
     <ClCompile Include="Hammersley.cpp" />
     <ClCompile Include="Jittered.cpp" />
     <ClCompile Include="Lambertian.cpp" />
@@ -170,6 +173,7 @@
     <ClCompile Include="MultiJittered.cpp" />
     <ClCompile Include="MultiObjectsTraceTest.cpp" />
     <ClCompile Include="NRooks.cpp" />
+    <ClCompile Include="Phong.cpp" />
     <ClCompile Include="Pinhole.cpp" />
     <ClCompile Include="Plane.cpp" />
     <ClCompile Include="PointLight.cpp" />

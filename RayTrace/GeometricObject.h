@@ -24,4 +24,5 @@ private:
 public:
 	virtual inline void SetMaterial(Material* _mat) { material = _mat; }
 	virtual inline Material* GetMaterial() { return material; }
+	virtual bool ShadowHit(const Ray& ray, float& tmin) const;
 };

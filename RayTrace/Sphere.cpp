@@ -79,3 +79,41 @@ GeometricObject * Sphere::Clone() const
 {
 	return new Sphere(*this);
 }
+
+bool Sphere::ShadowHit(const Ray & _ray, float & tmin) const
+{
+	double t;
+	Vect3 temp = _ray.origin - center;
+	double a = _ray.direction.Dot(_ray.direction);
+	double b = 2.0 * temp.Dot(_ray.direction);
+	double c = temp.Dot(temp) - radius * radius;
+
+	double disc = b * b - 4.0 * a * c;
+
+	if (disc < 0.0)
+	{
+		return false;
+	}
+	else
+	{
+		double e = sqrtf(disc);
+		double denorn = 2.0 * a;
+		t = (-b - e) / denorn;
+
+		if (t > kEpsilon)
+		{
+			tmin = t;
+			return true;
+		}
+
+		t = (-b + e) / denorn;
+
+		if (t > kEpsilon)
+		{
+			tmin = t;
+			return true;
+		}
+
+		return false;
+	}
+}

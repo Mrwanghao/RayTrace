@@ -12,6 +12,8 @@
 #include "Matte.h"
 #include "Ambient.h"
 #include "Directional.h"
+#include "Phong.h"
+#include "PointLight.h"
 
 using namespace std;
 
@@ -22,7 +24,6 @@ World::World()
 	tracer_ptr(nullptr)
 {
 }
-
 
 World::~World()
 {
@@ -51,9 +52,6 @@ World::~World()
 		delete tracer_ptr;
 		tracer_ptr = nullptr;
 	}
-
-
-
 }
 
 void World::Build()
@@ -63,7 +61,6 @@ void World::Build()
 	ambientPtr->SetColor(Vect3(1.0f, 1.0f, 1.0f));
 	vp = ViewPlane(SCREEN_HEIGHT, SCREEN_WIDTH, 1);
 	vp.SetSampler(new MultiJittered(16));
-	//tracer_ptr = new SingleSphereTracerTest(this);
 	tracer_ptr = new RayCast(this);
 
 	mainCamera = new Pinhole();
@@ -74,46 +71,51 @@ void World::Build()
 	mainCamera->SetLookAt(Vect3(0.0f, 0.0f, 0.0f));
 	mainCamera->ComputeUVW();
 
-
 	sphere = Sphere(Vect3(0.0f, 0.0f, 1500.0f), 100);
 
 	Sphere* spherePtr = new Sphere(Vect3(0.0f, 0.0f, 500.0f), 100);
-	Matte* material = new Matte();
-	material->SetKA(0.25f);
-	material->SetKD(0.65f);
+	Phong* material = new Phong();
+	material->SetKS(0.2f);
+	material->SetEXP(2.0f);
+	material->SetKA(0.2f);
+	material->SetKD(0.6f);
 	material->SetCD(Vect3(1.0f, 1.0f, 0.0f));
+	//material->SetSampler(new MultiJittered(16));
 	spherePtr->SetMaterial(material);
+
+	//Matte* material = new Matte();
+	//material->SetKA(0.25f);
+	//material->SetKD(0.65f);
+	//material->SetCD(Vect3(1.0f, 1.0f, 0.0f));
+	//spherePtr->SetMaterial(material);
 	objects.push_back(spherePtr);
 
-	Light* lightPtr = new Directional();
-	lightPtr->SetRadiance(3.0f);
-	lightPtr->SetColor(Vect3(1.0f, 1.0f, 1.0f));
-	lightPtr->SetDirection(Vect3(1.0f, 1.0f, -1.0f));
-	lights.push_back(lightPtr);
+	//Light* lightPtr = new Directional();
+	//lightPtr->SetRadiance(3.0f);
+	//lightPtr->SetColor(Vect3(1.0f, 1.0f, 1.0f));
+	//lightPtr->SetDirection(Vect3(0.0f, -1.0f, 1.0f));
+	//lights.push_back(lightPtr);
+
+	PointLight* pointLightPtr = new PointLight();
+	pointLightPtr->SetPosition(Vect3(0.0f, 400.0f, 0.0f));
+	pointLightPtr->SetRadiance(3.0f);
+	pointLightPtr->SetColor(Vect3(1.0f, 1.0f, 1.0f));
+	lights.push_back(pointLightPtr);
 
 	Plane* plane = new Plane(Vect3(0.0f, 10.0f, -1.0f), Vect3(0.0f, 0.0f, 5000.0f));
-	material = new Matte();
-	material->SetKA(0.25f);
-	material->SetKD(0.65f);
-	material->SetCD(Vect3(1.0f, 1.0f, 1.0f));
+	//Matte* materialMatte = new Matte();
+	//materialMatte->SetKA(0.25f);
+	//materialMatte->SetKD(0.65f);
+	//materialMatte->SetCD(Vect3(1.0f, 1.0f, 1.0f));
 	plane->SetMaterial(material);
 	objects.push_back(plane);
-
 }
 
 void World::RenderScene() const
 {
 	mainCamera->RenderScene(*this);
-
 }
 
-void World::OpenWindow(int hres, int wres) const
-{
-}
-
-void World::DisplayPixel(int row, int col) const
-{
-}
 
 ShadeRec World::hitObjects(const Ray & ray)
 {
@@ -144,6 +146,5 @@ ShadeRec World::hitObjects(const Ray & ray)
 		sr.hitPosition = hitPosition;
 	}
 	
-
 	return sr;
 }

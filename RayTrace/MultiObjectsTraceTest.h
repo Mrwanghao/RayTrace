@@ -12,5 +12,4 @@ public:
 
 public:
 	Vect3 trace_ray(const Ray& _ray) const override;
-
 };

@@ -78,17 +78,20 @@ Vect3 Matte::Shade(ShadeRec & sr)
 {
 	Vect3 wo = -sr.ray.direction;
 	Vect3 L = ambientBRDF->rho(sr, wo) * sr.world->ambientPtr->L(sr);
-	int 		num_lights = sr.world->GetLights().size();
+	int num_lights = sr.world->GetLights().size();
 
-	for (int j = 0; j < num_lights; j++) {
+	for (int j = 0; j < num_lights; j++) 
+	{
 		Vect3 wi = sr.world->lights[j]->GetDirection(sr);
-		float ndotwi = sr.hitNormal.Dot(wi);
+		float ndotwi = sr.hitNormal.Dot(-wi);
 
 		if (ndotwi > 0.0)
+		{
 			L += diffuseBRDF->f(sr, wo, wi) * sr.world->lights[j]->L(sr) * ndotwi;
+		}
 	}
 
-	return (L);
+	return L;
 }
 
 Matte::~Matte()
