@@ -288,5 +288,11 @@
     <Image Include="basic2.png">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="basic3.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="basic4.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>

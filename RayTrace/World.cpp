@@ -57,7 +57,7 @@ World::~World()
 void World::Build()
 {
 	ambientPtr = new Ambient();
-	ambientPtr->SetRadiance(0.9f);
+	ambientPtr->SetRadiance(1.0f);
 	ambientPtr->SetColor(Vect3(1.0f, 1.0f, 1.0f));
 	vp = ViewPlane(SCREEN_HEIGHT, SCREEN_WIDTH, 1);
 	vp.SetSampler(new MultiJittered(16));
@@ -73,40 +73,30 @@ void World::Build()
 
 	sphere = Sphere(Vect3(0.0f, 0.0f, 1500.0f), 100);
 
-	Sphere* spherePtr = new Sphere(Vect3(0.0f, 0.0f, 500.0f), 100);
 	Phong* material = new Phong();
-	material->SetKS(0.2f);
-	material->SetEXP(2.0f);
+	material->SetKS(0.5f);
+	material->SetEXP(5.0f);
 	material->SetKA(0.2f);
-	material->SetKD(0.6f);
+	material->SetKD(0.3f);
 	material->SetCD(Vect3(1.0f, 1.0f, 0.0f));
-	//material->SetSampler(new MultiJittered(16));
-	spherePtr->SetMaterial(material);
-
-	//Matte* material = new Matte();
-	//material->SetKA(0.25f);
-	//material->SetKD(0.65f);
-	//material->SetCD(Vect3(1.0f, 1.0f, 0.0f));
-	//spherePtr->SetMaterial(material);
-	objects.push_back(spherePtr);
 
 	//Light* lightPtr = new Directional();
-	//lightPtr->SetRadiance(3.0f);
+	//lightPtr->SetRadiance(1.0f);
 	//lightPtr->SetColor(Vect3(1.0f, 1.0f, 1.0f));
 	//lightPtr->SetDirection(Vect3(0.0f, -1.0f, 1.0f));
 	//lights.push_back(lightPtr);
 
 	PointLight* pointLightPtr = new PointLight();
-	pointLightPtr->SetPosition(Vect3(0.0f, 400.0f, 0.0f));
-	pointLightPtr->SetRadiance(3.0f);
+	pointLightPtr->SetRadiance(1.0f);
 	pointLightPtr->SetColor(Vect3(1.0f, 1.0f, 1.0f));
+	pointLightPtr->SetPosition(Vect3(0.0f, 400.0f, 0.0f));
 	lights.push_back(pointLightPtr);
 
-	Plane* plane = new Plane(Vect3(0.0f, 10.0f, -1.0f), Vect3(0.0f, 0.0f, 5000.0f));
-	//Matte* materialMatte = new Matte();
-	//materialMatte->SetKA(0.25f);
-	//materialMatte->SetKD(0.65f);
-	//materialMatte->SetCD(Vect3(1.0f, 1.0f, 1.0f));
+	Sphere* spherePtr = new Sphere(Vect3(0.0f, 0.0f, 500.0f), 100);
+	spherePtr->SetMaterial(material);
+	objects.push_back(spherePtr);
+
+	Plane* plane = new Plane(Vect3(0.0f, 1.0f, 0.0f), Vect3(0.0f, -500.0f, 0.0f));
 	plane->SetMaterial(material);
 	objects.push_back(plane);
 }
