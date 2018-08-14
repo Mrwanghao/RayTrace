@@ -40,6 +40,7 @@ Directional & Directional::operator=(const Directional & right)
 
 Vect3 Directional::GetDirection(ShadeRec & sr)
 {
+	direction.Normalize();
 	return direction;
 }
 

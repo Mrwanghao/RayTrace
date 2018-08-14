@@ -47,3 +47,23 @@ bool GeometricObject::ShadowHit(const Ray & ray, float & tmin) const
 {
 	return false;
 }
+
+Vect3 GeometricObject::GetNormal() const
+{
+	return Vect3(0.0f, 0.0f, 0.0f);
+}
+
+Vect3 GeometricObject::GetNormal(const Vect3 & point) const
+{
+	return Vect3(0.0f, 0.0f, 0.0f);
+}
+
+Vect3 GeometricObject::Sample()
+{
+	return Vect3(0.0f, 0.0f, 0.0f);
+}
+
+float GeometricObject::pdf(ShadeRec & sr)
+{
+	return 0.0f;
+}

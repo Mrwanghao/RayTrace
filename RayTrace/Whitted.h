@@ -12,6 +12,6 @@ public:
 	Whitted();
 	Whitted(World* _world);
 	virtual ~Whitted();
-	virtual Vect3 trace_ray(const Ray& ray, const int depth) const;
+	virtual Vect3 trace_ray(const Ray ray, int depth) const;
 
 };

@@ -37,6 +37,11 @@ float Vect3::GetLength() const
 	return sqrt(x * x + y * y + z * z);
 }
 
+float Vect3::GetLengthSq() const
+{
+	return x * x + y * y + z * z;
+}
+
 float Vect3::Dot(const Vect3& right) const
 {
 	return x * right.x + y * right.y + z * right.z;
@@ -89,9 +94,11 @@ Vect3 Vect3::operator-() const
 	return Vect3(-x, -y, -z);
 }
 
-Vect3 Vect3::operator+=(float scale)
+void Vect3::operator+=(float scale)
 {
-	return Vect3(x + scale, y + scale, z + scale);
+	x += scale;
+	y += scale;
+	z += scale;
 }
 
 Vect3 operator*(float scale, const Vect3 & right)

@@ -117,14 +117,18 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Ambient.h" />
+    <ClInclude Include="AmbientOccluder.h" />
     <ClInclude Include="AreaLight.h" />
+    <ClInclude Include="BBox.h" />
     <ClInclude Include="BRDF.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Color.h" />
+    <ClInclude Include="Compound.h" />
     <ClInclude Include="Directional.h" />
     <ClInclude Include="EngineDefine.h" />
     <ClInclude Include="GeometricObject.h" />
     <ClInclude Include="GlossySpecular.h" />
+    <ClInclude Include="Grid.h" />
     <ClInclude Include="Hammersley.h" />
     <ClInclude Include="Jittered.h" />
     <ClInclude Include="Lambertian.h" />
@@ -132,9 +136,11 @@
     <ClInclude Include="Material.h" />
     <ClInclude Include="MathUtil.h" />
     <ClInclude Include="Matte.h" />
+    <ClInclude Include="Mesh.h" />
     <ClInclude Include="MultiJittered.h" />
     <ClInclude Include="MultiObjectsTraceTest.h" />
     <ClInclude Include="NRooks.h" />
+    <ClInclude Include="PerfectSpecular.h" />
     <ClInclude Include="Phong.h" />
     <ClInclude Include="Pinhole.h" />
     <ClInclude Include="Plane.h" />
@@ -142,27 +148,35 @@
     <ClInclude Include="PureRandom.h" />
     <ClInclude Include="Ray.h" />
     <ClInclude Include="RayCast.h" />
+    <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="Reflective.h" />
     <ClInclude Include="Regular.h" />
     <ClInclude Include="Sampler.h" />
     <ClInclude Include="ShadeRec.h" />
     <ClInclude Include="SingleSphereTracerTest.h" />
     <ClInclude Include="Sphere.h" />
+    <ClInclude Include="Torus.h" />
     <ClInclude Include="Tracer.h" />
     <ClInclude Include="Vect2.h" />
     <ClInclude Include="Vect3.h" />
     <ClInclude Include="ViewPlane.h" />
     <ClInclude Include="Whitted.h" />
     <ClInclude Include="World.h" />
+    <ClInclude Include="Triangle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Ambient.cpp" />
+    <ClCompile Include="AmbientOccluder.cpp" />
     <ClCompile Include="AreaLight.cpp" />
+    <ClCompile Include="BBox.cpp" />
     <ClCompile Include="BRDF.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Compound.cpp" />
     <ClCompile Include="Directional.cpp" />
     <ClCompile Include="GeometricObject.cpp" />
     <ClCompile Include="GlossySpecular.cpp" />
+    <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Hammersley.cpp" />
     <ClCompile Include="Jittered.cpp" />
     <ClCompile Include="Lambertian.cpp" />
@@ -170,9 +184,11 @@
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="MathUtil.cpp" />
     <ClCompile Include="Matte.cpp" />
+    <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="MultiJittered.cpp" />
     <ClCompile Include="MultiObjectsTraceTest.cpp" />
     <ClCompile Include="NRooks.cpp" />
+    <ClCompile Include="PerfectSpecular.cpp" />
     <ClCompile Include="Phong.cpp" />
     <ClCompile Include="Pinhole.cpp" />
     <ClCompile Include="Plane.cpp" />
@@ -180,12 +196,16 @@
     <ClCompile Include="PureRandom.cpp" />
     <ClCompile Include="Ray.cpp" />
     <ClCompile Include="RayCast.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="Reflective.cpp" />
     <ClCompile Include="Regular.cpp" />
     <ClCompile Include="Sampler.cpp" />
     <ClCompile Include="ShadeRec.cpp" />
     <ClCompile Include="SingleSphereTracerTest.cpp" />
     <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="Torus.cpp" />
     <ClCompile Include="Tracer.cpp" />
+    <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Vect2.cpp" />
     <ClCompile Include="Vect3.cpp" />
     <ClCompile Include="ViewPlane.cpp" />
@@ -201,6 +221,8 @@
     <Image Include="basic2.png" />
     <Image Include="basic3.png" />
     <Image Include="basic4.png" />
+    <Image Include="basic5.png" />
+    <Image Include="basic6.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

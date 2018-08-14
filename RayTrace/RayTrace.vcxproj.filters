@@ -153,14 +153,44 @@
     <ClInclude Include="RayCast.h">
       <Filter>源文件\Tracer</Filter>
     </ClInclude>
-    <ClInclude Include="Whitted.h">
-      <Filter>源文件\Tracer</Filter>
-    </ClInclude>
     <ClInclude Include="GlossySpecular.h">
       <Filter>源文件\BRDF</Filter>
     </ClInclude>
     <ClInclude Include="Phong.h">
       <Filter>源文件\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>源文件\BaseType</Filter>
+    </ClInclude>
+    <ClInclude Include="BBox.h">
+      <Filter>源文件\BaseType</Filter>
+    </ClInclude>
+    <ClInclude Include="Torus.h">
+      <Filter>源文件\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="AmbientOccluder.h">
+      <Filter>源文件\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>源文件\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Compound.h">
+      <Filter>源文件\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Grid.h">
+      <Filter>源文件\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Rectangle.h">
+      <Filter>源文件\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="PerfectSpecular.h">
+      <Filter>源文件\BRDF</Filter>
+    </ClInclude>
+    <ClInclude Include="Reflective.h">
+      <Filter>源文件\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="Whitted.h">
+      <Filter>源文件\Tracer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -275,6 +305,36 @@
     <ClCompile Include="Phong.cpp">
       <Filter>源文件\Material</Filter>
     </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>源文件\BaseType</Filter>
+    </ClCompile>
+    <ClCompile Include="BBox.cpp">
+      <Filter>源文件\BaseType</Filter>
+    </ClCompile>
+    <ClCompile Include="Torus.cpp">
+      <Filter>源文件\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="AmbientOccluder.cpp">
+      <Filter>源文件\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>源文件\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Compound.cpp">
+      <Filter>源文件\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Grid.cpp">
+      <Filter>源文件\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Rectangle.cpp">
+      <Filter>源文件\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="PerfectSpecular.cpp">
+      <Filter>源文件\BRDF</Filter>
+    </ClCompile>
+    <ClCompile Include="Reflective.cpp">
+      <Filter>源文件\Material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="svpng.inc">
@@ -292,6 +352,12 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="basic4.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="basic5.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="basic6.png">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
 
-	World* world = new World;
+ 	World* world = new World;
 	world->Build();
 	world->RenderScene();
 

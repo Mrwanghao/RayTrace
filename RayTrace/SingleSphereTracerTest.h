@@ -11,6 +11,6 @@ public:
 	~SingleSphereTracerTest();
 
 public:
-	Vect3 trace_ray(const Ray& _ray) const override;
+	virtual Vect3 trace_ray(const Ray& _ray) const;
 };
 

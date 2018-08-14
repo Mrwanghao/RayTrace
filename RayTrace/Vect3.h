@@ -23,9 +23,9 @@ public:
 	void Normalize();
 	Vect3 GetNormalized() const;
 	float GetLength() const;
+	float GetLengthSq() const;
 	float Dot(const Vect3& right) const;
 	inline void LoadZero() { x = y = z = 0.0f; }
-
 public:
 	Vect3 operator-(const Vect3& right) const;
 	void operator/=(float scale);
@@ -36,7 +36,7 @@ public:
 	void operator+=(const Vect3& right);
 	Vect3 operator^(const Vect3& right) const;
 	Vect3 operator-() const;
-	Vect3 operator+=(float scale);
+	void operator+=(float scale);
 	
 	friend Vect3 operator*(float scale, const Vect3& right);
 };

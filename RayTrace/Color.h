@@ -9,5 +9,6 @@ public:
 	static const Vect3 Black;
 	static const Vect3 Red;
 	static const Vect3 Green;
+	static const Vect3 White;
 };
 

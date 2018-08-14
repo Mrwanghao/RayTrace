@@ -1,6 +1,6 @@
 #pragma once
 #include "Ray.h"
-//#include "ShadeRec.h"
+#include "BBox.h"
 
 class ShadeRec;
 class Material;
@@ -18,11 +18,15 @@ public:
 	GeometricObject& operator=(const GeometricObject& right);
 	virtual ~GeometricObject();
 
-private:
+protected:
 	Material * material;
 
 public:
 	virtual inline void SetMaterial(Material* _mat) { material = _mat; }
 	virtual inline Material* GetMaterial() { return material; }
 	virtual bool ShadowHit(const Ray& ray, float& tmin) const;
+	virtual Vect3 GetNormal() const;
+	virtual Vect3 GetNormal(const Vect3& point) const;
+	virtual Vect3 Sample();
+	virtual float pdf(ShadeRec& sr);
 };

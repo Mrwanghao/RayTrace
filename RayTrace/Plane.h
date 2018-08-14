@@ -7,7 +7,7 @@ class Plane : public GeometricObject
 private:
 	Vect3 normal;
 	Vect3 point;
-
+public:
 	static const double kEpsilon;
 
 public:

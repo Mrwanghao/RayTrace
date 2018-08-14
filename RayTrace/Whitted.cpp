@@ -21,7 +21,7 @@ Whitted::~Whitted()
 {
 }
 
-Vect3 Whitted::trace_ray(const Ray & ray, const int depth) const
+Vect3 Whitted::trace_ray(const Ray ray, int depth) const
 {
 	if (depth > world_ptr->vp.maxDepth)
 		return Color::Black;
