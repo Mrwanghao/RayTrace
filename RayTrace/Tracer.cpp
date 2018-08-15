@@ -3,6 +3,8 @@
 #include "Color.h"
 
 Tracer::Tracer()
+	:
+	world_ptr(nullptr)
 {
 }
 

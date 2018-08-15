@@ -58,14 +58,13 @@ Vect3 Reflective::Shade(ShadeRec & sr)
 
 	Vect3 wo = -sr.ray.direction;
 	Vect3 wi;
-	Vect3 fr = reflective_brdf->sample_f(sr, wo, wi);
+	Vect3 fr = reflective_brdf->samplef(sr, wo, wi);
 	fr.Normalize();
 	Ray reflected_ray(sr.hitPosition, wi);
-	//sr.depth = sr.depth + 1;
 
 	Vect3 color = sr.world->tracer_ptr->trace_ray(reflected_ray, sr.depth + 1);
 	//Vect3 value = color * (sr.hitNormal.Dot(wi));
-	float value = fr.Dot(color) * (sr.hitNormal.Dot(wi));
+	Vect3 value = fr * color * (sr.hitNormal.Dot(wi));
 	L += value;
 
 	return L;

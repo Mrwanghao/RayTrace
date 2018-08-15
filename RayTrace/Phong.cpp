@@ -125,7 +125,6 @@ Vect3 Phong::Shade(ShadeRec & sr)
 	return L;
 }
 
-
 Phong::~Phong()
 {
 	if (ambientBRDF)

@@ -192,6 +192,12 @@
     <ClInclude Include="Whitted.h">
       <Filter>源文件\Tracer</Filter>
     </ClInclude>
+    <ClInclude Include="GlossyReflector.h">
+      <Filter>源文件\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="PathTrace.h">
+      <Filter>源文件\Tracer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sampler.cpp">
@@ -334,6 +340,12 @@
     </ClCompile>
     <ClCompile Include="Reflective.cpp">
       <Filter>源文件\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="GlossyReflector.cpp">
+      <Filter>源文件\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="PathTrace.cpp">
+      <Filter>源文件\Tracer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

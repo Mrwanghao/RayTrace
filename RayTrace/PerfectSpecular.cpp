@@ -5,6 +5,7 @@
 
 PerfectSpecular::PerfectSpecular(void)
 	:
+	BRDF(),
 	kr(1.0f),
 	cr(1.0f, 1.0f, 1.0f)
 {
@@ -25,20 +26,21 @@ Vect3 PerfectSpecular::f(const ShadeRec & sr, const Vect3 & wo, const Vect3 & wi
 }
 
 //返回反射出去的颜色和方向
-Vect3 PerfectSpecular::sample_f(const ShadeRec & sr, const Vect3 & wo, Vect3 & wi) const
+Vect3 PerfectSpecular::samplef(const ShadeRec & sr, const Vect3 & wo, Vect3 & wi) const
 {
 	float ndotwo = sr.hitNormal.Dot(wo);
 	wi = -wo + 2.0 * sr.hitNormal * ndotwo;
 	wi.Normalize();
-	return (kr * cr / fabsf(sr.hitNormal.Dot(wi)));
+	return kr * cr / fabsf(sr.hitNormal.Dot(wi));
 }
 
-Vect3 PerfectSpecular::sample_f(const ShadeRec & sr, const Vect3 & wo, Vect3 & wi, float & pdf) const
+Vect3 PerfectSpecular::samplef(const ShadeRec & sr, const Vect3 & wo, Vect3 & wi, float & pdf) const
 {
 	float ndotwo = sr.hitNormal.Dot(wo);
 	wi = -wo + 2.0 * sr.hitNormal * ndotwo;
+	wi.Normalize();
 	pdf = fabsf(sr.hitNormal.Dot(wi));
-	return (kr * cr);
+	return kr * cr;
 }
 
 Vect3 PerfectSpecular::rho(const ShadeRec & sr, const Vect3 & wo) const

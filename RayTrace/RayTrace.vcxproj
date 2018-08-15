@@ -127,6 +127,7 @@
     <ClInclude Include="Directional.h" />
     <ClInclude Include="EngineDefine.h" />
     <ClInclude Include="GeometricObject.h" />
+    <ClInclude Include="GlossyReflector.h" />
     <ClInclude Include="GlossySpecular.h" />
     <ClInclude Include="Grid.h" />
     <ClInclude Include="Hammersley.h" />
@@ -140,6 +141,7 @@
     <ClInclude Include="MultiJittered.h" />
     <ClInclude Include="MultiObjectsTraceTest.h" />
     <ClInclude Include="NRooks.h" />
+    <ClInclude Include="PathTrace.h" />
     <ClInclude Include="PerfectSpecular.h" />
     <ClInclude Include="Phong.h" />
     <ClInclude Include="Pinhole.h" />
@@ -176,6 +178,7 @@
     <ClCompile Include="Directional.cpp" />
     <ClCompile Include="GeometricObject.cpp" />
     <ClCompile Include="GlossySpecular.cpp" />
+    <ClCompile Include="GlossyReflector.cpp" />
     <ClCompile Include="Grid.cpp" />
     <ClCompile Include="Hammersley.cpp" />
     <ClCompile Include="Jittered.cpp" />
@@ -188,6 +191,7 @@
     <ClCompile Include="MultiJittered.cpp" />
     <ClCompile Include="MultiObjectsTraceTest.cpp" />
     <ClCompile Include="NRooks.cpp" />
+    <ClCompile Include="PathTrace.cpp" />
     <ClCompile Include="PerfectSpecular.cpp" />
     <ClCompile Include="Phong.cpp" />
     <ClCompile Include="Pinhole.cpp" />

@@ -43,6 +43,8 @@ Lambertian::~Lambertian()
 {
 }
 
+//余弦分布
+//用于当没有光线照射到时 他将用于返回当前的颜色值
 Vect3 Lambertian::f(const ShadeRec & sr, const Vect3 & wo, const Vect3 & wi) const
 {
 	return kd * cd / PI;
@@ -59,7 +61,7 @@ Vect3 Lambertian::samplef(const ShadeRec & sr, const Vect3 & wo, Vect3 & wi, flo
 	wi = sp.x * u + sp.y * v + sp.z * w;
 	wi.Normalize();
 
-	pdf = sr.hitNormal.Dot(wi)/ PI;
+	pdf = sr.hitNormal.Dot(wi) / PI;
 
 	return kd * cd / PI;
 }

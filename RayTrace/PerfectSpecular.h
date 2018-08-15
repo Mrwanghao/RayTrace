@@ -11,8 +11,8 @@ public:
 	~PerfectSpecular(void);
 	virtual PerfectSpecular* Clone(void) const;
 	virtual Vect3 f(const ShadeRec& sr, const Vect3& wo, const Vect3& wi) const;
-	virtual Vect3 sample_f(const ShadeRec& sr, const Vect3& wo, Vect3& wi) const;
-	virtual Vect3 sample_f(const ShadeRec& sr, const Vect3& wo, Vect3& wi, float& pdf) const;
+	virtual Vect3 samplef(const ShadeRec& sr, const Vect3& wo, Vect3& wi) const;
+	virtual Vect3 samplef(const ShadeRec& sr, const Vect3& wo, Vect3& wi, float& pdf) const;
 	virtual Vect3 rho(const ShadeRec& sr, const Vect3& wo) const;
 
 	inline void SetKr(const float k) { kr = k; }
