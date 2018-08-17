@@ -18,6 +18,11 @@ Vect3 Material::Shade(ShadeRec & sr)
 	return Color::Black;
 }
 
+Vect3 Material::LE(const ShadeRec & sr)
+{
+	return Color::Black;
+}
+
 Material & Material::operator=(const Material & right)
 {
 	if (this == &right)

@@ -87,7 +87,7 @@ void World::Build()
 	PointLight* pointLightPtr = new PointLight();
 	pointLightPtr->SetRadiance(1.0f);
 	pointLightPtr->SetColor(Vect3(1.0f, 1.0f, 1.0f));
-	pointLightPtr->SetPosition(Vect3(0.0f, -200.0f, 400.0f));
+	pointLightPtr->SetPosition(Vect3(0.0f, 400.0f, 400.0f));
 	lights.push_back(pointLightPtr);
 
 	//Directional* directionalLightPtr = new Directional();
@@ -100,11 +100,11 @@ void World::Build()
 	Reflective* spherematerial = new Reflective();
 	spherematerial->SetKA(0.25f);
 	spherematerial->SetKD(0.75f);
-	spherematerial->SetCD(Vect3(1.0f, 1.0f, 1.0f));
+	spherematerial->SetCD(Vect3(1.0f, 0.3f, 0.3f));
 	spherematerial->SetKS(1.0f);
 	spherematerial->SetEXP(100.0f);
 	spherematerial->SetKR(10.0f);
-	spherematerial->SetCR(Vect3(1.0f, 1.0f, 1.0f));
+	spherematerial->SetCR(Vect3(1.0f, 0.3f, 0.3f));
 
 	Phong* material = new Phong();
 	material->SetKS(0.3f);
@@ -113,7 +113,7 @@ void World::Build()
 	material->SetKD(0.75f);
 	material->SetCD(Vect3(0.3f, 0.3f, 1.0f));
 
-	Sphere* spherePtr = new Sphere(Vect3(200.0f, -400.0f, 600.0f), 100);
+	Sphere* spherePtr = new Sphere(Vect3(300.0f, -400.0f, 600.0f), 100);
 	spherePtr->SetMaterial(spherematerial);
 	objects.push_back(spherePtr);
 

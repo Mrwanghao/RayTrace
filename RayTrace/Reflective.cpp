@@ -52,18 +52,22 @@ Reflective::~Reflective(void)
 	}
 }
 
+//光路可逆
 Vect3 Reflective::Shade(ShadeRec & sr)
 {
-	Vect3 L(Phong::Shade(sr));  // direct illumination
+	Vect3 L(Phong::Shade(sr)); 
 
 	Vect3 wo = -sr.ray.direction;
 	Vect3 wi;
+	//获得出射辐射度
 	Vect3 fr = reflective_brdf->samplef(sr, wo, wi);
 	fr.Normalize();
 	Ray reflected_ray(sr.hitPosition, wi);
 
+	//获得入射辐射度
 	Vect3 color = sr.world->tracer_ptr->trace_ray(reflected_ray, sr.depth + 1);
-	//Vect3 value = color * (sr.hitNormal.Dot(wi));
+
+	//进行光线与本地颜色的混合(因为是镜面反射，所以不衰变)
 	Vect3 value = fr * color * (sr.hitNormal.Dot(wi));
 	L += value;
 

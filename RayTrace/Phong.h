@@ -13,9 +13,9 @@ public:
 	Phong(const Phong& right);
 	virtual Material* Clone() const;
 	Phong& operator=(const Phong& right);
-	virtual Vect3 Shade(ShadeRec& sr);
 	virtual ~Phong();
 
+	virtual Vect3 Shade(ShadeRec& sr);
 public:
 	inline void SetKA(float _ka) { ambientBRDF->SetKA(_ka); }
 	inline void SetKD(float _kd) { diffuseBRDF->SetKD(_kd); }

@@ -11,18 +11,27 @@ PerfectSpecular::PerfectSpecular(void)
 {
 }
 
-PerfectSpecular::~PerfectSpecular(void)
-{
-}
 
 PerfectSpecular * PerfectSpecular::Clone(void) const
 {
 	return new PerfectSpecular(*this);
 }
 
-Vect3 PerfectSpecular::f(const ShadeRec & sr, const Vect3 & wo, const Vect3 & wi) const
+PerfectSpecular & PerfectSpecular::operator=(const PerfectSpecular & right)
 {
-	return Color::Black;
+	if (this == &right)
+	{
+		return *this;
+	}
+
+	kr = right.kr;
+	cr = right.cr;
+
+	return *this;
+}
+
+PerfectSpecular::~PerfectSpecular()
+{
 }
 
 //返回反射出去的颜色和方向
@@ -41,9 +50,4 @@ Vect3 PerfectSpecular::samplef(const ShadeRec & sr, const Vect3 & wo, Vect3 & wi
 	wi.Normalize();
 	pdf = fabsf(sr.hitNormal.Dot(wi));
 	return kr * cr;
-}
-
-Vect3 PerfectSpecular::rho(const ShadeRec & sr, const Vect3 & wo) const
-{
-	return Color::Black;
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include "BRDF.h"
-class Lambertian :
-	public BRDF
+class Lambertian : public BRDF
 {
 public:
 	Lambertian();

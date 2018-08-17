@@ -198,6 +198,9 @@
     <ClInclude Include="PathTrace.h">
       <Filter>源文件\Tracer</Filter>
     </ClInclude>
+    <ClInclude Include="Emissive.h">
+      <Filter>源文件\Material</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sampler.cpp">
@@ -347,6 +350,9 @@
     <ClCompile Include="PathTrace.cpp">
       <Filter>源文件\Tracer</Filter>
     </ClCompile>
+    <ClCompile Include="Emissive.cpp">
+      <Filter>源文件\Material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="svpng.inc">
@@ -370,6 +376,9 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="basic6.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="basic7.png">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

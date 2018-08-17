@@ -1,6 +1,7 @@
 #include "Rectangle.h"
 #include <math.h>
 #include "ShadeRec.h"
+#include "MultiJittered.h"
 
 const double Rectangle::kEpsilon = 0.01f;
 
@@ -15,7 +16,7 @@ Rectangle::Rectangle(void)
 	normal(0, 1, 0),
 	area(4.0),
 	inv_area(0.25),
-	sampler_ptr(NULL)
+	sampler_ptr(new MultiJittered(16))
 {
 }
 

@@ -113,8 +113,8 @@ Vect3 Phong::Shade(ShadeRec & sr)
 			{
 				Ray shadowRay(sr.hitPosition, -wi);
 				isShadow = sr.world->lights[j]->InShadow(shadowRay, sr);
-			
 			}
+
 			if (!isShadow)
 			{
 				L += (diffuseBRDF->f(sr, wo, wi) + specularBRDF->f(sr, wo, wi)) * sr.world->lights[j]->L(sr) * ndotwi;

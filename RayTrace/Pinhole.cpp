@@ -96,6 +96,6 @@ void Pinhole::RenderScene(const World & _world)
 		std::cout << "µÚ" << r << "ÐÐäÖÈ¾Íê±Ï" << std::endl;
 	}
 
-	svpng(fopen("basic6.png", "wb"), SCREEN_WIDTH, SCREEN_HEIGHT, img, 0);
+	svpng(fopen("basic7.png", "wb"), SCREEN_WIDTH, SCREEN_HEIGHT, img, 0);
 	free(img);
 }

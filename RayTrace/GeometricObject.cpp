@@ -43,6 +43,11 @@ GeometricObject::~GeometricObject()
 	}
 }
 
+float GeometricObject::pdf()
+{
+	return 1.0f;
+}
+
 bool GeometricObject::ShadowHit(const Ray & ray, float & tmin) const
 {
 	return false;

@@ -7,8 +7,8 @@
 GlossySpecular::GlossySpecular()
 	:
 	BRDF(),
-	ks(0.0f),
-	cs(0.0f, 0.0f, 0.0f),
+	ks(1.0f),
+	cs(1.0f, 1.0f, 1.0f),
 	sampler(nullptr)
 {
 }
@@ -38,7 +38,7 @@ Vect3 GlossySpecular::f(const ShadeRec & sr, const Vect3 & wo, const Vect3 & wi)
 Vect3 GlossySpecular::samplef(const ShadeRec & sr, const Vect3 & wo, Vect3 & wi, float & pdf) const
 {
 	float ndotwo = sr.hitNormal.Dot(wo);
-	Vect3 r = -wo + 2.0 * sr.hitNormal * ndotwo;     // direction of mirror reflection
+	Vect3 r = -wo + 2.0 * sr.hitNormal * ndotwo;     
 
 	Vect3 w = r;
 	Vect3 u = Vect3(0.00424, 1, 0.00764) ^ w;
@@ -46,20 +46,15 @@ Vect3 GlossySpecular::samplef(const ShadeRec & sr, const Vect3 & wo, Vect3 & wi,
 	Vect3 v = u ^ w;
 
 	Vect3 sp = sampler->SampleHemisphere();
-	wi = sp.x * u + sp.y * v + sp.z * w;			// reflected ray direction
+	wi = sp.x * u + sp.y * v + sp.z * w;			
 
-	if (sr.hitNormal.Dot(wi) < 0.0) 						// reflected ray is below tangent plane
+	if (sr.hitNormal.Dot(wi) < 0.0) 						
 		wi = -sp.x * u - sp.y * v + sp.z * w;
 	
 	float phong_lobe = pow(r.Dot(wi), exp);
 	pdf = phong_lobe * (sr.hitNormal.Dot(wi));
 
 	return ks * cs * phong_lobe;
-}
-
-Vect3 GlossySpecular::rho(const ShadeRec & sr, const Vect3 & wo) const
-{
-	return Color::Black;
 }
 
 void GlossySpecular::SetSampler(Sampler * _sampler, const float exp)

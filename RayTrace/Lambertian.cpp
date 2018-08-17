@@ -5,8 +5,8 @@
 Lambertian::Lambertian()
 	:
 	BRDF(),
-	kd(0.0f),
-	cd(0.0f, 0.0f, 0.0f)
+	kd(1.0f),
+	cd(1.0f, 1.0f, 1.0f)
 {
 }
 

@@ -13,9 +13,9 @@ public:
 	Light& operator=(const Light& right);
 	virtual Light* Clone() const = 0;
 
-	~Light();
+	virtual ~Light();
 
-public:
+protected:
 	bool IsShadow;
 
 public:
@@ -25,6 +25,8 @@ public:
 	virtual Vect3 GetDirection(ShadeRec& sr) = 0;
 	virtual Vect3 L(ShadeRec& sr);
 	virtual bool InShadow(const Ray& ray, const ShadeRec& sr) const;
+	virtual float G(const ShadeRec& sr) const;
+	virtual float pdf(const ShadeRec& sr) const;
 
 	virtual inline void SetRadiance(float _ls) = 0;
 	virtual inline void SetColor(const Vect3& _color) = 0;

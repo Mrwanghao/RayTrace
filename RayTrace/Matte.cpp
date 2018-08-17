@@ -94,6 +94,37 @@ Vect3 Matte::Shade(ShadeRec & sr)
 	return L;
 }
 
+Vect3 Matte::AreaLightShade(ShadeRec & sr)
+{
+	Vect3 wo = -sr.ray.direction;
+	Vect3 L = ambientBRDF->rho(sr, wo) * sr.world->ambientPtr->L(sr);
+	int num_lights = sr.world->GetLights().size();
+
+	for (int j = 0; j < num_lights; j++)
+	{
+		Vect3 wi = sr.world->lights[j]->GetDirection(sr);
+		float ndotwi = sr.hitNormal.Dot(-wi);
+
+		if (ndotwi > 0.0)
+		{
+			bool inShadow = false;
+
+			if (sr.world->lights[j]->GetShadow())
+			{
+				Ray shadowRay(sr.hitPosition, -wi);
+				inShadow = sr.world->lights[j]->InShadow(shadowRay, sr);
+			}
+
+			if (!inShadow)
+			{
+				L += diffuseBRDF->f(sr, wo, wi) * sr.world->lights[j]->L(sr) * sr.world->lights[j]->G(sr) * ndotwi / sr.world->lights[j]->pdf(sr);
+			}
+		}
+	}
+
+	return L;
+}
+
 Matte::~Matte()
 {
 	if (ambientBRDF)

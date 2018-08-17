@@ -23,6 +23,10 @@ public:
 	virtual Vect3 GetNormal(const Vect3& p);
 	virtual float pdf(ShadeRec& sr);
 
+public:
+	virtual inline void SetMaterial(Material* _mat) { material = _mat; }
+	virtual inline Material* GetMaterial() { return material; }
+
 private:
 	Vect3		p0;   			
 	Vect3		a;				

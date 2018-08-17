@@ -1,12 +1,12 @@
 #include "AreaLight.h"
 #include "ShadeRec.h"
 #include "World.h"
-
+#include "Rectangle.h"
 
 AreaLight::AreaLight()
 	:
 	Light(),
-	objPtr(nullptr),
+	objPtr(new Rectangle),
 	materialPtr(nullptr)
 {
 }
@@ -31,6 +31,21 @@ AreaLight * AreaLight::Clone() const
 {
 	return new AreaLight(*this);
 }
+
+
+Vect3 AreaLight::L(const ShadeRec & sr) const
+{
+	float ndotd = -lightNormal.Dot(wi);
+	if (ndotd > 0.0f)
+	{
+		return materialPtr->LE(sr);
+	}
+	else
+	{
+		return Color::Black;
+	}
+}
+
 
 float AreaLight::G(const ShadeRec & sr) const
 {
@@ -86,12 +101,12 @@ AreaLight& AreaLight::operator= (const AreaLight& rhs) {
 
 Vect3 AreaLight::GetDirection(ShadeRec & sr)
 {
-	samplePoint = objPtr->Sample();    // used in the G function
+	samplePoint = objPtr->Sample();   
 	lightNormal = objPtr->GetNormal(samplePoint);
-	wi = samplePoint - sr.hitPosition;  		// used in the G function
+	wi = samplePoint - sr.hitPosition;  	
 	wi.Normalize();
 
-	return wi;
+	return wi; 
 }
 
 bool AreaLight::InShadow(const Ray & _ray, const ShadeRec & sr) const
