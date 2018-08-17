@@ -9,11 +9,11 @@ Rectangle::Rectangle(void)
 	: 
 	GeometricObject(),
 	p0(-1, 0, -1),
-	a(0, 0, 2),
+	a(0, 2, 0),
 	b(2, 0, 0),
 	a_len_squared(4.0),
 	b_len_squared(4.0),
-	normal(0, 1, 0),
+	normal(0, 0, 1),
 	area(4.0),
 	inv_area(0.25),
 	sampler_ptr(new MultiJittered(16))
@@ -155,6 +155,11 @@ Vect3 Rectangle::Sample(void)
 }
 
 Vect3 Rectangle::GetNormal(const Vect3 & p)
+{
+	return normal;
+}
+
+Vect3 Rectangle::GetNormal() const
 {
 	return normal;
 }

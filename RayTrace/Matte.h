@@ -12,9 +12,10 @@ public:
 	virtual Material* Clone() const;
 	Matte& operator=(const Matte& right);
 	virtual ~Matte();
-
+	
 	virtual Vect3 Shade(ShadeRec& sr);
 	virtual Vect3 AreaLightShade(ShadeRec& sr);
+	
 public:
 	inline void SetKA(float _ka) { ambientBRDF->SetKA(_ka); }
 	inline void SetKD(float _kd) { diffuseBRDF->SetKD(_kd); }

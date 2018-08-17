@@ -230,6 +230,7 @@
     <Image Include="basic5.png" />
     <Image Include="basic6.png" />
     <Image Include="basic7.png" />
+    <Image Include="basic8.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

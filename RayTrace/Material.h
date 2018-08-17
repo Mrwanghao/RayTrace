@@ -13,6 +13,7 @@ public:
 
 	virtual Vect3 Shade(ShadeRec& sr);
 	virtual Vect3 LE(const ShadeRec& sr);
+	virtual Vect3 AreaLightShade(ShadeRec& sr);
 protected:
 	Material & operator=(const Material& right);
 };

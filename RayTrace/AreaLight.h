@@ -14,7 +14,7 @@ public:
 	AreaLight& operator=(const AreaLight& right);
 	virtual Vect3 GetDirection(ShadeRec& sr);
 	virtual bool InShadow(const Ray& _ray, const ShadeRec& sr) const;
-	virtual Vect3 L(const ShadeRec& sr) const;
+	virtual Vect3 L(ShadeRec& sr);
 	virtual float G(const ShadeRec& sr) const;
 	virtual float pdf(ShadeRec& sr) const;
 

@@ -21,6 +21,7 @@ public:
 	virtual void SetSampler(Sampler* sampler);
 	virtual Vect3 Sample(void);
 	virtual Vect3 GetNormal(const Vect3& p);
+	virtual Vect3 GetNormal() const;
 	virtual float pdf(ShadeRec& sr);
 
 public:

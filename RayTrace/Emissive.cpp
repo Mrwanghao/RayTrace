@@ -38,7 +38,7 @@ float Emissive::pdf(const ShadeRec & sr) const
 
 Vect3 Emissive::Shade(ShadeRec & sr)
 {
-	return Vect3();
+	return ls * ce;
 }
 
 Vect3 Emissive::AreaLightShade(ShadeRec & sr)

@@ -7,7 +7,8 @@ AreaLight::AreaLight()
 	:
 	Light(),
 	objPtr(new Rectangle),
-	materialPtr(nullptr)
+	materialPtr(nullptr),
+	lightNormal(objPtr->GetNormal())
 {
 }
 
@@ -33,12 +34,12 @@ AreaLight * AreaLight::Clone() const
 }
 
 
-Vect3 AreaLight::L(const ShadeRec & sr) const
+Vect3 AreaLight::L(ShadeRec & sr)
 {
 	float ndotd = -lightNormal.Dot(wi);
 	if (ndotd > 0.0f)
 	{
-		return materialPtr->LE(sr);
+		return materialPtr->AreaLightShade(sr);
 	}
 	else
 	{
@@ -102,11 +103,11 @@ AreaLight& AreaLight::operator= (const AreaLight& rhs) {
 Vect3 AreaLight::GetDirection(ShadeRec & sr)
 {
 	samplePoint = objPtr->Sample();   
-	lightNormal = objPtr->GetNormal(samplePoint);
+	lightNormal = objPtr->GetNormal();
 	wi = samplePoint - sr.hitPosition;  	
 	wi.Normalize();
 
-	return wi; 
+	return -wi; 
 }
 
 bool AreaLight::InShadow(const Ray & _ray, const ShadeRec & sr) const

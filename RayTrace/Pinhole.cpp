@@ -81,7 +81,7 @@ void Pinhole::RenderScene(const World & _world)
 				pp.x = vp.s * (c - 0.5 * vp.wres + sp.x);
 				pp.y = vp.s * (r - 0.5 * vp.hres + sp.y);
 				ray.direction = GetDirection(pp);
-				L += _world.tracer_ptr->trace_ray(ray, 0);
+				L += _world.tracer_ptr->trace_ray(ray);
 			}
 
 			L /= vp.samplesCount;
@@ -96,6 +96,6 @@ void Pinhole::RenderScene(const World & _world)
 		std::cout << "µÚ" << r << "ÐÐäÖÈ¾Íê±Ï" << std::endl;
 	}
 
-	svpng(fopen("basic7.png", "wb"), SCREEN_WIDTH, SCREEN_HEIGHT, img, 0);
+	svpng(fopen("basic8.png", "wb"), SCREEN_WIDTH, SCREEN_HEIGHT, img, 0);
 	free(img);
 }
