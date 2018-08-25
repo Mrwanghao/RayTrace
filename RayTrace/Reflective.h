@@ -14,12 +14,13 @@ public:
 	virtual Reflective* Clone(void) const;
 	virtual ~Reflective(void);
 
-	void SetKR(const float k) { reflective_brdf->SetKr(k); }
-	void SetCR(const Vect3& c) { reflective_brdf->SetCr(c); }
+	void SetKR(const float k) { reflectiveBRDF->SetKr(k); }
+	void SetCR(const Vect3& c) { reflectiveBRDF->SetCr(c); }
 
 	virtual Vect3 Shade(ShadeRec& s);
+	virtual Vect3 PathShade(ShadeRec& sr);
 
 private: 
-	PerfectSpecular * reflective_brdf;
+	PerfectSpecular * reflectiveBRDF;
 
 };

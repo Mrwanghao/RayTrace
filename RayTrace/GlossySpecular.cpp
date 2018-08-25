@@ -9,9 +9,10 @@ GlossySpecular::GlossySpecular()
 	BRDF(),
 	ks(1.0f),
 	cs(1.0f, 1.0f, 1.0f),
-	sampler(nullptr)
+	exp(1.0f)
 {
 }
+
 GlossySpecular * GlossySpecular::Clone() const
 {
 	return new GlossySpecular(*this);

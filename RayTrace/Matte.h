@@ -15,6 +15,7 @@ public:
 	
 	virtual Vect3 Shade(ShadeRec& sr);
 	virtual Vect3 AreaLightShade(ShadeRec& sr);
+	virtual Vect3 PathShade(ShadeRec& sr);
 	
 public:
 	inline void SetKA(float _ka) { ambientBRDF->SetKA(_ka); }

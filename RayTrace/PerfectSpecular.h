@@ -11,6 +11,7 @@ public:
 	virtual PerfectSpecular* Clone(void) const;
 	PerfectSpecular& operator=(const PerfectSpecular& right);
 	virtual ~PerfectSpecular();
+
 	virtual Vect3 samplef(const ShadeRec& sr, const Vect3& wo, Vect3& wi) const;
 	virtual Vect3 samplef(const ShadeRec& sr, const Vect3& wo, Vect3& wi, float& pdf) const;
 

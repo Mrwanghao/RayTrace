@@ -10,7 +10,7 @@ public:
 	float s;
 	float gamma;
 	float invGamma;
-	Sampler* sampler = nullptr;
+	Sampler* sampler;
 	int samplesCount;
 	int maxDepth;
 

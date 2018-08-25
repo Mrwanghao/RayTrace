@@ -18,12 +18,17 @@ Vect3 Material::Shade(ShadeRec & sr)
 	return Color::Black;
 }
 
-Vect3 Material::LE(const ShadeRec & sr)
+Vect3 Material::LE(ShadeRec & sr)
 {
 	return Color::Black;
 }
 
 Vect3 Material::AreaLightShade(ShadeRec & sr)
+{
+	return Color::Black;
+}
+
+Vect3 Material::PathShade(ShadeRec & sr)
 {
 	return Color::Black;
 }

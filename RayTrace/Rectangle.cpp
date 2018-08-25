@@ -8,14 +8,14 @@ const double Rectangle::kEpsilon = 0.01f;
 Rectangle::Rectangle(void)
 	: 
 	GeometricObject(),
-	p0(-1, 0, -1),
-	a(0, 2, 0),
-	b(2, 0, 0),
-	a_len_squared(4.0),
-	b_len_squared(4.0),
-	normal(0, 0, 1),
-	area(4.0),
-	inv_area(0.25),
+	p0(0, 0, 500),
+	a(0, 200, 500),
+	b(200, 0, 500),
+	a_len_squared(40000.0),
+	b_len_squared(40000.0),
+	normal(0, 0, -1),
+	area(4000.0),
+	inv_area(0.00025),
 	sampler_ptr(new MultiJittered(16))
 {
 }

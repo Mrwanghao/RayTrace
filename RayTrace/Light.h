@@ -1,6 +1,6 @@
 #pragma once
 #include "Vect3.h"
-#include "Color.h"	
+#include "Color.h"
 #include "Ray.h"
 
 class ShadeRec;
@@ -19,14 +19,16 @@ protected:
 	bool IsShadow;
 
 public:
-	
 	virtual inline void SetShadow(bool _isShadow) { IsShadow = _isShadow; }
 	virtual inline bool GetShadow() { return IsShadow; }
+
 	virtual Vect3 GetDirection(ShadeRec& sr) = 0;
+
 	virtual Vect3 L(ShadeRec& sr);
-	virtual bool InShadow(const Ray& ray, const ShadeRec& sr) const;
 	virtual float G(const ShadeRec& sr) const;
 	virtual float pdf(ShadeRec& sr) const;
+
+	virtual bool InShadow(const Ray& ray, const ShadeRec& sr) const;
 
 	virtual inline void SetRadiance(float _ls) = 0;
 	virtual inline void SetColor(const Vect3& _color) = 0;

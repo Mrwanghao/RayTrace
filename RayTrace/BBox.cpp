@@ -67,7 +67,7 @@ BBox::~BBox()
 {
 }
 
-//根据一根射线来判断是否相交
+//锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷锟斤拷锟叫讹拷锟角凤拷锟洁交
 bool BBox::Hit(const Ray & ray) const
 {
 	double ox = ray.origin.x; double oy = ray.origin.y; double oz = ray.origin.z;

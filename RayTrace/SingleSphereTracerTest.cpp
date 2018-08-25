@@ -27,7 +27,7 @@ SingleSphereTracerTest::~SingleSphereTracerTest()
 
 
 
-Vect3 SingleSphereTracerTest::trace_ray(const Ray & _ray) const
+Vect3 SingleSphereTracerTest::trace_ray(const Ray& _ray) const
 {
 	ShadeRec sr(world_ptr);
 	double t;

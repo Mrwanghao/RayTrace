@@ -7,7 +7,7 @@
 Reflective::Reflective(void)
 	:
 	Phong(),
-	reflective_brdf(new PerfectSpecular)
+	reflectiveBRDF(new PerfectSpecular)
 {
 }
 
@@ -15,10 +15,10 @@ Reflective::Reflective(const Reflective & rm)
 	:
 	Phong(rm)
 {
-	if (rm.reflective_brdf)
-		reflective_brdf = rm.reflective_brdf->Clone();
+	if (rm.reflectiveBRDF)
+		reflectiveBRDF = rm.reflectiveBRDF->Clone();
 	else
-		reflective_brdf = NULL;
+		reflectiveBRDF = NULL;
 }
 
 Reflective & Reflective::operator=(const Reflective & rhs)
@@ -28,13 +28,13 @@ Reflective & Reflective::operator=(const Reflective & rhs)
 
 	Phong::operator=(rhs);
 
-	if (reflective_brdf) {
-		delete reflective_brdf;
-		reflective_brdf = NULL;
+	if (reflectiveBRDF) {
+		delete reflectiveBRDF;
+		reflectiveBRDF = NULL;
 	}
 
-	if (rhs.reflective_brdf)
-		reflective_brdf = rhs.reflective_brdf->Clone();
+	if (rhs.reflectiveBRDF)
+		reflectiveBRDF = rhs.reflectiveBRDF->Clone();
 
 	return (*this);
 }
@@ -46,9 +46,9 @@ Reflective * Reflective::Clone(void) const
 
 Reflective::~Reflective(void)
 {
-	if (reflective_brdf) {
-		delete reflective_brdf;
-		reflective_brdf = NULL;
+	if (reflectiveBRDF) {
+		delete reflectiveBRDF;
+		reflectiveBRDF = NULL;
 	}
 }
 
@@ -60,16 +60,21 @@ Vect3 Reflective::Shade(ShadeRec & sr)
 	Vect3 wo = -sr.ray.direction;
 	Vect3 wi;
 	//获得出射辐射度
-	Vect3 fr = reflective_brdf->samplef(sr, wo, wi);
+	Vect3 fr = reflectiveBRDF->samplef(sr, wo, wi);
 	fr.Normalize();
-	Ray reflected_ray(sr.hitPosition, wi);
+	Ray reflectedRay(sr.hitPosition, wi);
 
 	//获得入射辐射度
-	Vect3 color = sr.world->tracer_ptr->trace_ray(reflected_ray, sr.depth + 1);
+	Vect3 color = sr.world->tracer_ptr->trace_ray(reflectedRay, sr.depth + 1);
 
 	//进行光线与本地颜色的混合(因为是镜面反射，所以不衰变)
 	Vect3 value = fr * color * (sr.hitNormal.Dot(wi));
 	L += value;
 
 	return L;
+}
+
+Vect3 Reflective::PathShade(ShadeRec & sr)
+{
+	return Vect3();
 }

@@ -4,6 +4,7 @@
 class World;
 class Ray;
 
+
 class PathTrace : public Tracer
 {
 public:

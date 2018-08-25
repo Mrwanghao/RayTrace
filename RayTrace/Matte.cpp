@@ -3,6 +3,9 @@
 #include "Vect3.h"
 #include "World.h"
 #include "Light.h"
+#include "Tracer.h"
+#include "ShadeRec.h"
+#include "World.h"
 
 Matte::Matte()
 	:
@@ -123,6 +126,18 @@ Vect3 Matte::AreaLightShade(ShadeRec & sr)
 	}
 
 	return L;
+}
+
+Vect3 Matte::PathShade(ShadeRec & sr)
+{
+	Vect3 wi;
+	Vect3 wo = -sr.ray.direction;
+	float pdf;
+	Vect3 f = diffuseBRDF->samplef(sr, wo, wi, pdf);
+	float ndotwi = sr.hitNormal.Dot(wi);
+	Ray reflectedRay(sr.hitPosition, wi);
+
+	return f * sr.world->tracer_ptr->trace_ray(reflectedRay, sr.depth + 1) * ndotwi / pdf;
 }
 
 Matte::~Matte()

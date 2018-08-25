@@ -39,6 +39,7 @@ Vect3 PointLight::GetDirection(ShadeRec & sr)
 	return Vect3(sr.hitPosition - position).GetNormalized();
 }
 
+//��ʱ��ǵü���˥��
 Vect3 PointLight::L(ShadeRec & sr)
 {
 	return ls * color;

@@ -27,5 +27,4 @@ private:
 	float ks;
 	float exp;
 	Vect3 cs;
-	Sampler* sampler;
 };

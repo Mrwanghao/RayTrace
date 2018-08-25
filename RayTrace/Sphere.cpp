@@ -59,7 +59,7 @@ bool Sphere::Hit(const Ray & _ray, double & tmin, ShadeRec & sr) const
 
 		t = (-b + e) / denorn;
 		
-		if (t > kEpsilon)
+		if (t > kEpsilon && (_ray.origin - center).GetLength() - radius > kEpsilon)
 		{
 			tmin = t;
 			sr.hitNormal = (temp + t * _ray.direction) / radius;

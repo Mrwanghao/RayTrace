@@ -49,6 +49,9 @@
     <Filter Include="源文件\Material">
       <UniqueIdentifier>{e7550f90-c483-49a1-8c3e-030bc57ad17a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\BTDF">
+      <UniqueIdentifier>{c2fb1e38-1d23-400e-9431-d26476567a16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sampler.h">
@@ -165,20 +168,8 @@
     <ClInclude Include="BBox.h">
       <Filter>源文件\BaseType</Filter>
     </ClInclude>
-    <ClInclude Include="Torus.h">
-      <Filter>源文件\Object</Filter>
-    </ClInclude>
     <ClInclude Include="AmbientOccluder.h">
       <Filter>源文件\Lights</Filter>
-    </ClInclude>
-    <ClInclude Include="Triangle.h">
-      <Filter>源文件\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Compound.h">
-      <Filter>源文件\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="Grid.h">
-      <Filter>源文件\Object</Filter>
     </ClInclude>
     <ClInclude Include="Rectangle.h">
       <Filter>源文件\Object</Filter>
@@ -199,6 +190,15 @@
       <Filter>源文件\Tracer</Filter>
     </ClInclude>
     <ClInclude Include="Emissive.h">
+      <Filter>源文件\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="BTDF.h">
+      <Filter>源文件\BTDF</Filter>
+    </ClInclude>
+    <ClInclude Include="PerfectTransmitter.h">
+      <Filter>源文件\BTDF</Filter>
+    </ClInclude>
+    <ClInclude Include="Transparent.h">
       <Filter>源文件\Material</Filter>
     </ClInclude>
   </ItemGroup>
@@ -320,20 +320,8 @@
     <ClCompile Include="BBox.cpp">
       <Filter>源文件\BaseType</Filter>
     </ClCompile>
-    <ClCompile Include="Torus.cpp">
-      <Filter>源文件\Object</Filter>
-    </ClCompile>
     <ClCompile Include="AmbientOccluder.cpp">
       <Filter>源文件\Lights</Filter>
-    </ClCompile>
-    <ClCompile Include="Triangle.cpp">
-      <Filter>源文件\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Compound.cpp">
-      <Filter>源文件\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Grid.cpp">
-      <Filter>源文件\Object</Filter>
     </ClCompile>
     <ClCompile Include="Rectangle.cpp">
       <Filter>源文件\Object</Filter>
@@ -351,6 +339,15 @@
       <Filter>源文件\Tracer</Filter>
     </ClCompile>
     <ClCompile Include="Emissive.cpp">
+      <Filter>源文件\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="BTDF.cpp">
+      <Filter>源文件\BTDF</Filter>
+    </ClCompile>
+    <ClCompile Include="PerfectTransmitter.cpp">
+      <Filter>源文件\BTDF</Filter>
+    </ClCompile>
+    <ClCompile Include="Transparent.cpp">
       <Filter>源文件\Material</Filter>
     </ClCompile>
   </ItemGroup>
@@ -382,6 +379,12 @@
       <Filter>资源文件</Filter>
     </Image>
     <Image Include="basic8.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="basic10.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="basic9.png">
       <Filter>资源文件</Filter>
     </Image>
   </ItemGroup>

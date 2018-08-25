@@ -25,7 +25,7 @@ Tracer::~Tracer()
 }
 
 
-//传入一个射线 然后返回一个颜色
+//锟斤拷锟斤拷一锟斤拷锟斤拷锟斤拷 然锟襟返伙拷一锟斤拷锟斤拷色
 Vect3 Tracer::trace_ray(const Ray & _ray) const
 {
 	return Color::Black;

@@ -28,7 +28,7 @@ Vect3 RayCast::trace_ray(const Ray & ray) const
 	if (sr.hitAnObject)
 	{
 		sr.ray = ray;
-#if 0
+#if 1
 		return sr.materialPtr->Shade(sr);
 #else
 		return sr.materialPtr->AreaLightShade(sr);
@@ -36,6 +36,6 @@ Vect3 RayCast::trace_ray(const Ray & ray) const
 	}
 	else
 	{
-		return Color::Black;
+		return Color::White;
 	}
 }

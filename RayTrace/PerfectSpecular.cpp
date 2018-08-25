@@ -11,7 +11,6 @@ PerfectSpecular::PerfectSpecular(void)
 {
 }
 
-
 PerfectSpecular * PerfectSpecular::Clone(void) const
 {
 	return new PerfectSpecular(*this);
@@ -34,7 +33,7 @@ PerfectSpecular::~PerfectSpecular()
 {
 }
 
-//·µ»Ø·´Éä³öÈ¥µÄÑÕÉ«ºÍ·½Ïò
+//ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½ï¿½ï¿½É«ï¿½Í·ï¿½ï¿½ï¿½
 Vect3 PerfectSpecular::samplef(const ShadeRec & sr, const Vect3 & wo, Vect3 & wi) const
 {
 	float ndotwo = sr.hitNormal.Dot(wo);

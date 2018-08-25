@@ -43,8 +43,8 @@ Lambertian::~Lambertian()
 {
 }
 
-//余弦分布
-//用于当没有光线照射到时 他将用于返回当前的颜色值
+//锟斤拷锟揭分诧拷
+//锟斤拷锟节碉拷没锟叫癸拷锟斤拷锟斤拷锟戒到时 锟斤拷锟斤拷锟斤拷锟节凤拷锟截碉拷前锟斤拷锟斤拷色值
 Vect3 Lambertian::f(const ShadeRec & sr, const Vect3 & wo, const Vect3 & wi) const
 {
 	return kd * cd / PI;
@@ -66,6 +66,7 @@ Vect3 Lambertian::samplef(const ShadeRec & sr, const Vect3 & wo, Vect3 & wi, flo
 	return kd * cd / PI;
 }
 
+//锟斤拷锟斤拷锟斤拷
 Vect3 Lambertian::rho(const ShadeRec & sr, const Vect3 & wo) const
 {
 	return kd * cd;

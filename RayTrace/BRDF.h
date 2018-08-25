@@ -14,10 +14,10 @@ public:
 	virtual BRDF* Clone() const = 0;
 
 public:
-	virtual Vect3 f(const ShadeRec& sr, const Vect3& wo, const Vect3& wi) const; //ÓÃì¶·´Éä¹âºÍçRÃæ¸ß¹â·´Éä¬FÏó
+	virtual Vect3 f(const ShadeRec& sr, const Vect3& wo, const Vect3& wi) const; //ï¿½ï¿½ì¶·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½ï¿½ß¹â·´ï¿½ï¿½Fï¿½ï¿½
 	virtual Vect3 samplef(const ShadeRec& sr, const Vect3& wo, Vect3& wi) const; //
 	virtual Vect3 samplef(const ShadeRec& sr, const Vect3& wo, Vect3& wi, float& pdf) const;
-	virtual Vect3 rho(const ShadeRec& sr, const Vect3& wo) const;//­h¾³¹âµÄÖøÉ«
+	virtual Vect3 rho(const ShadeRec& sr, const Vect3& wo) const;//ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«
 
 	void SetSampler(Sampler* _sampler);
 	

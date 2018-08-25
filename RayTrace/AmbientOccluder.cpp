@@ -1,6 +1,5 @@
 #include "AmbientOccluder.h"
 #include "Sampler.h"
-#include "Sampler.h"
 #include "Ray.h"
 #include "ShadeRec.h"
 #include "World.h"
@@ -13,6 +12,15 @@ AmbientOccluder::AmbientOccluder()
 {
 }
 
+AmbientOccluder::~AmbientOccluder()
+{
+	if (sampler)
+	{
+		delete sampler;
+		sampler = nullptr;
+	}
+}
+
 void AmbientOccluder::SetSampler(Sampler * _sampler)
 {
 	if (sampler)
@@ -21,7 +29,7 @@ void AmbientOccluder::SetSampler(Sampler * _sampler)
 		sampler = nullptr;
 	}
 
-	sampler = _sampler;
+	sampler = _sampler->Clone();
 	sampler->MapSamplesToHemisphere(1);
 }
 

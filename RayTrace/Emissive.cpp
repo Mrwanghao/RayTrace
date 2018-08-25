@@ -1,6 +1,7 @@
 #include "Emissive.h"
 #include "Color.h"
 
+
 Emissive::Emissive()
 	:
 	Material(),
@@ -34,6 +35,11 @@ float Emissive::G(const ShadeRec & sr) const
 float Emissive::pdf(const ShadeRec & sr) const
 {
 	return 0.0f;
+}
+
+Vect3 Emissive::LE(ShadeRec & sr)
+{
+	return ce * ls;
 }
 
 Vect3 Emissive::Shade(ShadeRec & sr)

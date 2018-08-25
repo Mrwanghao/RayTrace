@@ -184,7 +184,7 @@ void Sampler::MapSamplesToUnitDisk()
 				}
 				else
 				{
-					phi = 0.0f; // ½Ç¶ÈÆðµã
+					phi = 0.0f; // ï¿½Ç¶ï¿½ï¿½ï¿½ï¿½
 				}
 			}
 		}

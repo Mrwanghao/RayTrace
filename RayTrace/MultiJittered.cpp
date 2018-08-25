@@ -68,7 +68,7 @@ void MultiJittered::GenerateSamples()
 				samples[i * n + j + p * samplesCount].y = (j * n + i) * subcell_width + RandomFloat() * subcell_width;
 			}
 
-	//在同一行进行打乱顺序
+	//锟斤拷同一锟叫斤拷锟叫达拷锟斤拷顺锟斤拷
 	for (int p = 0; p < setsCount; p++)
 		for (int i = 0; i < n; i++)
 			for (int j = 0; j < n; j++) {
@@ -78,7 +78,7 @@ void MultiJittered::GenerateSamples()
 				samples[i * n + k + p * samplesCount].x = t;
 			}
 
-	//在同一列进行打乱顺序
+	//锟斤拷同一锟叫斤拷锟叫达拷锟斤拷顺锟斤拷
 	for (int p = 0; p < setsCount; p++)
 		for (int i = 0; i < n; i++)
 			for (int j = 0; j < n; j++) {

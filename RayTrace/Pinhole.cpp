@@ -72,16 +72,16 @@ void Pinhole::RenderScene(const World & _world)
 
 	for (int r = 0; r < vp.hres; r++)
 	{
-		for (int c = 0; c < vp.wres; c++) {				
+		for (int c = 0; c < vp.wres; c++) {
 			L = Color::Black;
-			
+
 			for (int p = 0, count = vp.samplesCount; p < count; p++)
 			{
 				sp = vp.sampler->SampleUnitSquare();
 				pp.x = vp.s * (c - 0.5 * vp.wres + sp.x);
 				pp.y = vp.s * (r - 0.5 * vp.hres + sp.y);
 				ray.direction = GetDirection(pp);
-				L += _world.tracer_ptr->trace_ray(ray);
+				L += _world.tracer_ptr->trace_ray(ray, 0);
 			}
 
 			L /= vp.samplesCount;
@@ -93,9 +93,12 @@ void Pinhole::RenderScene(const World & _world)
 			img[((SCREEN_HEIGHT - 1 - r) * SCREEN_WIDTH + SCREEN_WIDTH - 1 - c) * 3 + 1] = (unsigned char)(L.y * 255);
 			img[((SCREEN_HEIGHT - 1 - r) * SCREEN_WIDTH + SCREEN_WIDTH - 1 - c) * 3 + 2] = (unsigned char)(L.z * 255);
 		}
-		std::cout << "µÚ" << r << "ÐÐäÖÈ¾Íê±Ï" << std::endl;
+
+
+		
+		std::cout << "ç¬¬" << r << "è¡Œæ¸²æŸ“å®Œæ¯•" << std::endl;
 	}
 
-	svpng(fopen("basic8.png", "wb"), SCREEN_WIDTH, SCREEN_HEIGHT, img, 0);
+	svpng(fopen("basic9.png", "wb"), SCREEN_WIDTH, SCREEN_HEIGHT, img, 0);
 	free(img);
 }

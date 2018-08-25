@@ -20,6 +20,8 @@
 #include "AreaLight.h"
 #include "Rectangle.h"
 #include "Emissive.h"
+#include "PathTrace.h"
+#include "Transparent.h"
 
 using namespace std;
 
@@ -73,8 +75,8 @@ void World::Build()
 	//ambientPtr = ambient;
 	vp = ViewPlane(SCREEN_HEIGHT, SCREEN_WIDTH, 1);
 	vp.SetSampler(new MultiJittered(16));
-	vp.SetMaxDepth(10);
-	tracer_ptr = new RayCast(this);
+	vp.SetMaxDepth(5);
+	tracer_ptr = new Whitted(this);
 
 	mainCamera = new Pinhole();
 	mainCamera->SetEye(Vect3(0.0f, 0.0f, -500.0f));
@@ -86,29 +88,25 @@ void World::Build()
 
 	sphere = Sphere(Vect3(0.0f, 0.0f, 1500.0f), 100);
 
-	Emissive* emisssive = new Emissive();
-	emisssive->SetLS(400000.0f);
-	emisssive->SetCE(Color::White);
-	
-	Rectangle* rectanglePtr = new Rectangle();
-	rectanglePtr->SetMaterial(emisssive);
-	rectanglePtr->SetSampler(new MultiJittered(16));
-	objects.push_back(rectanglePtr);
+	Transparent* transparent = new Transparent();
+	transparent->SetKS(0.5f);
+	transparent->SetEXP(2000.0f);
+	transparent->SetIOT(1.5f);
+	transparent->SetKR(0.1f);
+	transparent->SetKT(0.9f);
+	transparent->SetCD(Vect3(0.0f, 0.0f, 0.0f));
 
-	AreaLight* arealight = new AreaLight();
-	arealight->SetColor(Color::White);
-	arealight->SetObject(rectanglePtr);
-	lights.push_back(arealight);
+	Sphere* sphere = new Sphere(Vect3(0.0f, -400.0f, 600.0f), 100);
+	sphere->SetMaterial(transparent);
+	objects.push_back(sphere);
 
-	Matte* matte = new Matte();
-	matte->SetCD(Vect3(1.0f, 0.3f, 0.3f));
-	matte->SetKA(0.25f);
-	matte->SetKD(0.75f);
-
-	Sphere* s1 = new Sphere(Vect3(0.0f, -400.0f, 600.0f), 100);
-	s1->SetMaterial(matte);
-	objects.push_back(s1);
-
+	Matte* material2 = new Matte();
+	material2->SetCD(Vect3(0.3f, 0.3f, 1.0f));
+	material2->SetKA(0.25f);
+	material2->SetKD(0.75f);
+	Sphere* sphere2 = new Sphere(Vect3(100.0f, -400.0f, 800.0f), 100);
+	sphere2->SetMaterial(material2);
+	objects.push_back(sphere2);
 
 	Matte* material = new Matte();
 	material->SetCD(Vect3(0.3f, 1.0f, 0.3f));
@@ -118,58 +116,43 @@ void World::Build()
 	plane->SetMaterial(material);
 	objects.push_back(plane);
 
-	//PointLight* pointLightPtr = new PointLight();
-	//pointLightPtr->SetRadiance(1.0f);
-	//pointLightPtr->SetColor(Vect3(1.0f, 1.0f, 1.0f));
-	//pointLightPtr->SetPosition(Vect3(0.0f, 400.0f, 400.0f));
-	//lights.push_back(pointLightPtr);
+	PointLight* pointlight = new PointLight();
+	pointlight->SetColor(Color::White);
+	pointlight->SetPosition(Vect3(0.0f, 0.0f, 0.0f));
+	pointlight->SetRadiance(1.0f);
+	lights.push_back(pointlight);
 
-	//Directional* directionalLightPtr = new Directional();
-	//directionalLightPtr->SetColor(Vect3(1.0f, 1.0f, 1.0f));
-	//directionalLightPtr->SetRadiance(2.0f);
-	//directionalLightPtr->SetDirection(Vect3(0.0f, -1.0f, 1.0f));
-	//directionalLightPtr->SetShadow(true);
-	//lights.push_back(directionalLightPtr);
-
-	//Reflective* spherematerial = new Reflective();
-	//spherematerial->SetKA(0.25f);
-	//spherematerial->SetKD(0.75f);
-	//spherematerial->SetCD(Vect3(1.0f, 0.3f, 0.3f));
-	//spherematerial->SetKS(1.0f);
-	//spherematerial->SetEXP(100.0f);
-	//spherematerial->SetKR(10.0f);
-	//spherematerial->SetCR(Vect3(1.0f, 0.3f, 0.3f));
+	//Emissive* emisssive = new Emissive();
+	//emisssive->SetLS(4000.0f);
+	//emisssive->SetCE(Color::White);
 	//
-	//Phong* material = new Phong();
-	//material->SetKS(0.3f);
-	//material->SetEXP(5.0f);
+	//Rectangle* rectanglePtr = new Rectangle();
+	//rectanglePtr->SetMaterial(emisssive);
+	//rectanglePtr->SetSampler(new MultiJittered(16));
+	//objects.push_back(rectanglePtr);
+	//
+	//AreaLight* arealight = new AreaLight();
+	//arealight->SetColor(Color::White);
+	//arealight->SetObject(rectanglePtr);
+	//lights.push_back(arealight);
+	//
+	//Matte* matte = new Matte();
+	//matte->SetCD(Vect3(1.0f, 0.3f, 0.3f));
+	//matte->SetKA(0.25f);
+	//matte->SetKD(0.75f);
+	//
+	//Sphere* s1 = new Sphere(Vect3(0.0f, -400.0f, 600.0f), 100);
+	//s1->SetMaterial(matte);
+	//objects.push_back(s1);
+	//
+	//Matte* material = new Matte();
+	//material->SetCD(Vect3(0.3f, 1.0f, 0.3f));
 	//material->SetKA(0.25f);
 	//material->SetKD(0.75f);
-	//material->SetCD(Vect3(0.3f, 0.3f, 1.0f));
-	//
-	//Sphere* spherePtr = new Sphere(Vect3(300.0f, -400.0f, 600.0f), 100);
-	//spherePtr->SetMaterial(spherematerial);
-	//objects.push_back(spherePtr);
-	//
-	//Reflective* spherematerial2 = new Reflective();
-	//spherematerial2->SetKA(0.25f);
-	//spherematerial2->SetKD(0.75f);
-	//spherematerial2->SetCD(Vect3(0.3f, 1.0f, 0.3f));
-	//spherematerial2->SetKS(1.0f);
-	//spherematerial2->SetEXP(100.0f);
-	//spherematerial2->SetKR(3.0f);
-	//spherematerial2->SetCR(Vect3(0.3f, 1.0f, 0.3f));
-	//Sphere* spherePtr2 = new Sphere(Vect3(0.0f, -400.0f, 600.0f), 100);
-	//spherePtr2->SetMaterial(spherematerial2);
-	//objects.push_back(spherePtr2);
-
-	//Sphere* spherePtr2 = new Sphere(Vect3(200.0f, -400.0f, 600.0f), 100);
-	//spherePtr2->SetMaterial(material);
-	//objects.push_back(spherePtr2);
-	
 	//Plane* plane = new Plane(Vect3(0.0f, 1.0f, 0.0f), Vect3(0.0f, -500.0f, 0.0f));
 	//plane->SetMaterial(material);
 	//objects.push_back(plane);
+
 }
 
 void World::RenderScene() const
