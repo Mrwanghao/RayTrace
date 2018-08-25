@@ -36,6 +36,6 @@ Vect3 RayCast::trace_ray(const Ray & ray) const
 	}
 	else
 	{
-		return Color::White;
+		return Color::Black;
 	}
 }

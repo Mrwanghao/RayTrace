@@ -114,8 +114,8 @@ Vect3 Transparent::Shade(ShadeRec & sr)
 		Vect3 wt;
 		Vect3 ft = specularBTDF->samplef(sr, wo, wt);
 		Ray transmittedRay(sr.hitPosition, wt);
-		//Vect3 color1 = sr.world->tracer_ptr->trace_ray(reflectedRay, sr.depth + 1);
-		//Vect3 color2 = sr.world->tracer_ptr->trace_ray(transmittedRay, sr.depth + 1);
+		Vect3 color1 = sr.world->tracer_ptr->trace_ray(reflectedRay, sr.depth + 1);
+		Vect3 color2 = sr.world->tracer_ptr->trace_ray(transmittedRay, sr.depth + 1);
 		L += fr * sr.world->tracer_ptr->trace_ray(reflectedRay, sr.depth + 1) * fabsf(sr.hitNormal.Dot(wi));
 		L += ft * sr.world->tracer_ptr->trace_ray(transmittedRay, sr.depth + 1) * fabsf(sr.hitNormal.Dot(wt));
 

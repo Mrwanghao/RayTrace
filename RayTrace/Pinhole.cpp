@@ -96,7 +96,7 @@ void Pinhole::RenderScene(const World & _world)
 
 
 		
-		std::cout << "第" << r << "行渲染完毕" << std::endl;
+		std::cout << "the line " << r << " draw over!" << std::endl;
 	}
 
 	svpng(fopen("basic9.png", "wb"), SCREEN_WIDTH, SCREEN_HEIGHT, img, 0);

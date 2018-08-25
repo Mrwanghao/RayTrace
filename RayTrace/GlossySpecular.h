@@ -20,7 +20,7 @@ public:
 	inline void SetKS(float _ks) { ks = _ks; }
 	inline void SetEXP(float _exp) { exp = _exp; }
 	inline void SetCS(const Vect3& _cs) { cs = _cs; }
-	inline void SetSampler(Sampler* _sampler) { sampler = _sampler; }
+	
 	void SetSampler(Sampler* _sampler, const float exp);
 	void SetSamples(const int samplesCount, const float exp);
 private:

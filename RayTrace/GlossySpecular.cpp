@@ -26,7 +26,7 @@ Vect3 GlossySpecular::f(const ShadeRec & sr, const Vect3 & wo, const Vect3 & wi)
 {
 	Vect3 L;
 	float ndotwi = sr.hitNormal.Dot(-wi);
-	Vect3 r(-wi + 2.0f * sr.hitNormal * ndotwi);
+	Vect3 r(wi + 2.0f * sr.hitNormal * ndotwi);
 	r.Normalize();
 	float rdotwo = r.Dot(wo);
 

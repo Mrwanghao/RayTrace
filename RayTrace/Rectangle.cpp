@@ -139,6 +139,7 @@ bool Rectangle::Hit(const Ray & ray, double & tmin, ShadeRec & sr) const
 	tmin = t;
 	sr.hitNormal = normal;
 	sr.hitPosition = p;
+	sr.ray = ray;
 
 	return (true);
 }

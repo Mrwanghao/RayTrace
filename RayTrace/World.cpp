@@ -91,12 +91,12 @@ void World::Build()
 	Transparent* transparent = new Transparent();
 	transparent->SetKS(0.5f);
 	transparent->SetEXP(2000.0f);
-	transparent->SetIOT(1.5f);
+	transparent->SetIOT(1.3f);
 	transparent->SetKR(0.1f);
-	transparent->SetKT(0.9f);
+	transparent->SetKT(0.5f);
 	transparent->SetCD(Vect3(0.0f, 0.0f, 0.0f));
 
-	Sphere* sphere = new Sphere(Vect3(0.0f, -400.0f, 600.0f), 100);
+	Sphere* sphere = new Sphere(Vect3(0.0f, -200.0f, 600.0f), 100);
 	sphere->SetMaterial(transparent);
 	objects.push_back(sphere);
 
@@ -104,7 +104,7 @@ void World::Build()
 	material2->SetCD(Vect3(0.3f, 0.3f, 1.0f));
 	material2->SetKA(0.25f);
 	material2->SetKD(0.75f);
-	Sphere* sphere2 = new Sphere(Vect3(100.0f, -400.0f, 800.0f), 100);
+	Sphere* sphere2 = new Sphere(Vect3(-100.0f, -200.0f, 800.0f), 100);
 	sphere2->SetMaterial(material2);
 	objects.push_back(sphere2);
 
@@ -116,11 +116,11 @@ void World::Build()
 	plane->SetMaterial(material);
 	objects.push_back(plane);
 
-	PointLight* pointlight = new PointLight();
-	pointlight->SetColor(Color::White);
-	pointlight->SetPosition(Vect3(0.0f, 0.0f, 0.0f));
-	pointlight->SetRadiance(1.0f);
-	lights.push_back(pointlight);
+	PointLight* pointLightPtr = new PointLight();
+	pointLightPtr->SetPosition(Vect3(0.0f, 400.0f, 0.0f));
+	pointLightPtr->SetRadiance(3.0f);
+	pointLightPtr->SetColor(Vect3(1.0f, 1.0f, 1.0f));
+	lights.push_back(pointLightPtr);
 
 	//Emissive* emisssive = new Emissive();
 	//emisssive->SetLS(4000.0f);
