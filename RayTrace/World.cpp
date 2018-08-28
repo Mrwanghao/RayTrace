@@ -93,12 +93,20 @@ void World::Build()
 	transparent->SetEXP(2000.0f);
 	transparent->SetIOT(1.3f);
 	transparent->SetKR(0.1f);
-	transparent->SetKT(0.5f);
+	transparent->SetKT(0.9f);
 	transparent->SetCD(Vect3(0.0f, 0.0f, 0.0f));
 
 	Sphere* sphere = new Sphere(Vect3(0.0f, -200.0f, 600.0f), 100);
 	sphere->SetMaterial(transparent);
 	objects.push_back(sphere);
+
+	Matte* material3 = new Matte();
+	material3->SetCD(Vect3(1.0f, 0.3f, 1.0f));
+	material3->SetKA(0.25f);
+	material3->SetKD(0.75f);
+	Sphere* sphere3 = new Sphere(Vect3(100.0f, -200.0f, 800.0f), 100);
+	sphere3->SetMaterial(material3);
+	objects.push_back(sphere3);
 
 	Matte* material2 = new Matte();
 	material2->SetCD(Vect3(0.3f, 0.3f, 1.0f));

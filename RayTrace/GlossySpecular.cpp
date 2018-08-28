@@ -24,6 +24,7 @@ GlossySpecular::~GlossySpecular()
 
 Vect3 GlossySpecular::f(const ShadeRec & sr, const Vect3 & wo, const Vect3 & wi) const
 {
+	//wo为视角
 	Vect3 L;
 	float ndotwi = sr.hitNormal.Dot(-wi);
 	Vect3 r(wi + 2.0f * sr.hitNormal * ndotwi);
@@ -52,8 +53,9 @@ Vect3 GlossySpecular::samplef(const ShadeRec & sr, const Vect3 & wo, Vect3 & wi,
 	if (sr.hitNormal.Dot(wi) < 0.0) 						
 		wi = -sp.x * u - sp.y * v + sp.z * w;
 	
+	//反射光与采样光 r与wi的夹角必定小于90
 	float phong_lobe = pow(r.Dot(wi), exp);
-	pdf = phong_lobe * (sr.hitNormal.Dot(wi));
+	pdf = sr.hitNormal.Dot(wi); //到时候使用的时候仍然会被除cos
 
 	return ks * cs * phong_lobe;
 }

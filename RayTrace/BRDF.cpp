@@ -8,6 +8,12 @@ BRDF::BRDF()
 
 BRDF::BRDF(const BRDF & right)
 {
+	if (sampler)
+	{
+		delete sampler;
+		sampler = nullptr;
+	}
+
 	if (right.sampler)
 	{
 		sampler = right.sampler->Clone();

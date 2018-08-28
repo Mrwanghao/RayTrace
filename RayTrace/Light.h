@@ -19,8 +19,8 @@ protected:
 	bool IsShadow;
 
 public:
-	virtual inline void SetShadow(bool _isShadow) { IsShadow = _isShadow; }
-	virtual inline bool GetShadow() { return IsShadow; }
+	inline void SetShadow(bool _isShadow) { IsShadow = _isShadow; }
+	inline bool GetShadow() { return IsShadow; }
 
 	virtual Vect3 GetDirection(ShadeRec& sr) = 0;
 

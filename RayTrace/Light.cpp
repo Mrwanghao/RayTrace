@@ -29,14 +29,14 @@ Light::~Light()
 {
 }
 
-Vect3 Light::L(ShadeRec & sr)
-{
-	return Color::Black;
-}
-
 bool Light::InShadow(const Ray & ray, const ShadeRec & sr) const
 {
 	return false;
+}
+
+Vect3 Light::L(ShadeRec & sr)
+{
+	return Color::Black;
 }
 
 float Light::G(const ShadeRec & sr) const

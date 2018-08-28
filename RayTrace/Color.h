@@ -1,5 +1,8 @@
- #pragma once
+#pragma once
 #include "Vect3.h"
+
+
+
 class Color
 {
 public:

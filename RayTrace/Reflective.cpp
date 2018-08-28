@@ -67,7 +67,7 @@ Vect3 Reflective::Shade(ShadeRec & sr)
 	//获得入射辐射度
 	Vect3 color = sr.world->tracer_ptr->trace_ray(reflectedRay, sr.depth + 1);
 
-	//进行光线与本地颜色的混合(因为是镜面反射，所以不衰变)
+	//进行光线与本地颜色的混合(因为是镜面反射，所以不衰变) wi其实是光线，因为这么写可以说明我们进行了cos计算，但是因为是计算镜面反射，没有衰变，所以可以省去在fr除了cos
 	Vect3 value = fr * color * (sr.hitNormal.Dot(wi));
 	L += value;
 

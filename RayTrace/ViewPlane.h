@@ -8,8 +8,6 @@ public:
 	int hres;
 	int wres;
 	float s;
-	float gamma;
-	float invGamma;
 	Sampler* sampler;
 	int samplesCount;
 	int maxDepth;
